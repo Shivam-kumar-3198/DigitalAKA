@@ -1,40 +1,122 @@
 import type { Metadata } from 'next';
-import { BLOG_POSTS } from '@/lib/constants';
-import SectionWrapper from '@/components/ui/SectionWrapper';
+import Image from 'next/image';
 import Link from 'next/link';
+import { getAllPosts } from '@/lib/wordpress';
+import SectionWrapper from '@/components/ui/SectionWrapper';
 
 export const metadata: Metadata = {
   title: 'Blog',
   description: 'Insights, tips, and news from the digitalAka team.',
 };
 
-export default function BlogPage() {
+function stripHtml(html: string): string {
+  return html
+    .replace(/<[^>]*>/g, '')
+    .replace(/\[&hellip;\]|\[…\]/g, '…')
+    .trim();
+}
+
+function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString('en-IN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+interface Props {
+  searchParams: { page?: string };
+}
+
+export default async function BlogPage({ searchParams }: Props) {
+  const currentPage = Math.max(1, parseInt(searchParams.page ?? '1', 10));
+  const { posts, totalPages } = await getAllPosts({ page: currentPage, perPage: 9 });
+
   return (
     <SectionWrapper>
       <h1 className="text-4xl font-bold tracking-tight text-gray-900">Blog</h1>
-      <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {BLOG_POSTS.map((post) => (
-          <Link
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            className="group block overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition hover:shadow-md"
-          >
-            <div className="h-40 w-full bg-gray-200">
-              <div className="flex h-full items-center justify-center text-gray-400">
-                {post.title} thumbnail
-              </div>
-            </div>
-            <div className="p-5">
-              <p className="text-xs text-gray-500">{post.date}</p>
-              <h2 className="mt-1 text-lg font-semibold text-gray-900 group-hover:text-primary">
-                {post.title}
-              </h2>
-              <p className="mt-2 text-sm text-gray-600">{post.excerpt}</p>
-              <p className="mt-2 text-xs font-medium text-primary">By {post.author}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
+      <p className="mt-4 text-lg text-gray-600">
+        Insights, tips, and news from the digitalAka team.
+      </p>
+
+      {posts.length === 0 ? (
+        <p className="mt-12 text-gray-500">No posts found.</p>
+      ) : (
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => {
+            const media = post._embedded?.['wp:featuredmedia']?.[0];
+            const author = post._embedded?.author?.[0];
+            const excerpt = stripHtml(post.excerpt.rendered);
+
+            return (
+              <Link
+                key={post.id}
+                href={`/blog/${post.slug}`}
+                className="group block overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition hover:shadow-md"
+              >
+                <div className="relative h-48 w-full bg-gray-100">
+                  {media?.source_url ? (
+                    <Image
+                      src={media.source_url}
+                      alt={media.alt_text || post.title.rendered}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center text-sm text-gray-400">
+                      No image
+                    </div>
+                  )}
+                </div>
+
+                <div className="p-5">
+                  <p className="text-xs text-gray-500">{formatDate(post.date)}</p>
+                  <h2
+                    className="mt-1 text-lg font-semibold text-gray-900 group-hover:text-primary"
+                    dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                  />
+                  {excerpt && (
+                    <p className="mt-2 line-clamp-3 text-sm text-gray-600">{excerpt}</p>
+                  )}
+                  {author && (
+                    <p className="mt-3 text-xs font-medium text-primary">
+                      By {author.name}
+                    </p>
+                  )}
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      )}
+
+      {totalPages > 1 && (
+        <nav
+          className="mt-12 flex items-center justify-center gap-4"
+          aria-label="Blog pagination"
+        >
+          {currentPage > 1 && (
+            <Link
+              href={`/blog?page=${currentPage - 1}`}
+              className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >
+              ← Previous
+            </Link>
+          )}
+          <span className="text-sm text-gray-600">
+            Page {currentPage} of {totalPages}
+          </span>
+          {currentPage < totalPages && (
+            <Link
+              href={`/blog?page=${currentPage + 1}`}
+              className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >
+              Next →
+            </Link>
+          )}
+        </nav>
+      )}
     </SectionWrapper>
   );
 }

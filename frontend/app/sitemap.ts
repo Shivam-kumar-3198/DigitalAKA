@@ -1,27 +1,55 @@
-import { MetadataRoute } from 'next';
-import { PORTFOLIO, BLOG_POSTS } from '@/lib/constants';
+import type { MetadataRoute } from 'next';
+import { getAllPosts, getAllPages } from '@/lib/wordpress';
+import { PORTFOLIO } from '@/lib/constants';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://digitalaka.com';
+const BASE_URL = 'https://digitalaka.com';
 
-  const staticPages = [
-    { url: baseUrl, lastModified: new Date() },
-    { url: `${baseUrl}/about`, lastModified: new Date() },
-    { url: `${baseUrl}/services`, lastModified: new Date() },
-    { url: `${baseUrl}/portfolio`, lastModified: new Date() },
-    { url: `${baseUrl}/blog`, lastModified: new Date() },
-    { url: `${baseUrl}/contact`, lastModified: new Date() },
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const staticPages: MetadataRoute.Sitemap = [
+    { url: BASE_URL, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
+    { url: `${BASE_URL}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE_URL}/services`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE_URL}/portfolio`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
+    { url: `${BASE_URL}/contact`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.5 },
   ];
 
-  const portfolioPages = PORTFOLIO.map((item) => ({
-    url: `${baseUrl}/portfolio/${item.slug}`,
+  const portfolioPages: MetadataRoute.Sitemap = PORTFOLIO.map((item) => ({
+    url: `${BASE_URL}/portfolio/${item.slug}`,
     lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.6,
   }));
 
-  const blogPages = BLOG_POSTS.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+  // Paginate through all WordPress posts
+  let blogPages: MetadataRoute.Sitemap = [];
+  let page = 1;
+  let totalPages = 1;
+
+  do {
+    const { posts, totalPages: tp } = await getAllPosts({ page, perPage: 100 });
+    totalPages = tp;
+
+    for (const post of posts) {
+      blogPages.push({
+        url: `${BASE_URL}/blog/${post.slug}`,
+        lastModified: new Date(post.modified),
+        changeFrequency: 'weekly',
+        priority: 0.7,
+      });
+    }
+
+    page++;
+  } while (page <= totalPages && totalPages > 0);
+
+  // WordPress pages (about, services, etc. if managed in WP)
+  const wpPages = await getAllPages();
+  const wpPageEntries: MetadataRoute.Sitemap = wpPages.map((p) => ({
+    url: `${BASE_URL}/pages/${p.slug}`,
+    lastModified: new Date(p.modified),
+    changeFrequency: 'monthly',
+    priority: 0.6,
   }));
 
-  return [...staticPages, ...portfolioPages, ...blogPages];
+  return [...staticPages, ...portfolioPages, ...blogPages, ...wpPageEntries];
 }
