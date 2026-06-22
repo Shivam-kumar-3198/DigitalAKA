@@ -5,12 +5,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'digitalaka.com' },
     ],
   },
-  webpack(config) {
-    // Prevents EISDIR / readlink failures on Windows caused by
-    // webpack trying to resolve junction-point symlinks in node_modules.
-    config.resolve.symlinks = false;
-    return config;
-  },
+  // Removed the Webpack overrides so Vercel can build normally
 };
 
 export default nextConfig;
