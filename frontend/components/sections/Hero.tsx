@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import ExpertModal from '@/components/ui/ExpertModal';
 
 export default function Hero() {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted]         = useState(false);
+  const [showExpertModal, setShowExpertModal] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -45,12 +47,12 @@ export default function Hero() {
           >
             Deploy Now
           </Link>
-          <Link 
-            href="/demo" 
+          <button
+            onClick={() => setShowExpertModal(true)}
             className="flex w-full sm:w-auto h-12 sm:h-14 items-center justify-center rounded-full border border-slate-200 bg-white px-8 sm:px-10 text-[13px] sm:text-sm font-medium sm:font-bold tracking-wide text-slate-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50"
           >
             Talk to an Expert
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -235,6 +237,8 @@ export default function Hero() {
           animation: flow 4s linear infinite;
         }
       `}} />
+
+      <ExpertModal open={showExpertModal} onClose={() => setShowExpertModal(false)} />
     </section>
   );
 }

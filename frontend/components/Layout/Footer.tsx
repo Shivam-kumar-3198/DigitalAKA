@@ -110,7 +110,7 @@ export default function Footer() {
               <img
                 src="https://digitalaka.com/wp-content/uploads/2024/06/digitalaka-logo.webp"
                 alt="DigitalAka"
-                className="h-9 w-auto brightness-0 invert opacity-90 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100"
+                className="h-9 w-auto rounded-lg bg-white px-2 py-1 opacity-90 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100"
               />
             </Link>
 

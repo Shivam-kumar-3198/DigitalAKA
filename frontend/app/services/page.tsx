@@ -22,7 +22,7 @@ export default function ServicesPage() {
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service) => (
             <Card key={service.id} className="text-center">
-              <div className="text-5xl">{service.icon}</div>
+              <div className="text-5xl">{service.iconName}</div>
               <h2 id={service.id} className="mt-4 text-xl font-semibold text-gray-900">
                 {service.title}
               </h2>

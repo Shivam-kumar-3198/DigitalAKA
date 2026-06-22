@@ -69,7 +69,7 @@ export default function Header() {
           <Link href="/" className="flex items-center transition-transform duration-300 hover:scale-[1.02]">
             <img 
               src="https://digitalaka.com/wp-content/uploads/2024/06/digitalaka-logo.webp" 
-              alt="Digital Aka Logo" 
+              alt="digitalAka Logo" 
               className="h-10 w-auto object-contain pr-2"
               loading="eager"
             />

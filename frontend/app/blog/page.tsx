@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: 'Insights, tips, and news from the Digital AKA team.',
+  description: 'Insights, tips, and news from the digitalAka team.',
 };
 
 export default function BlogPage() {

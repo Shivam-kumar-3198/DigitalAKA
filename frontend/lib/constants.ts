@@ -10,17 +10,18 @@ export const NAV_LINKS = [
 
 // Site metadata
 export const SITE = {
-  name: 'Digital AKA',
+  name: 'digitalAka',
   tagline: 'We create digital experiences that matter',
   url: 'https://digitalaka.com',
   description:
-    'Digital AKA is a full-service digital agency specialising in web design, development, SEO, and digital marketing.',
+    'digitalAka is a full-service digital agency specialising in web design, development, SEO, and digital marketing.',
   logo: '/images/logo.svg', // you can use an SVG or PNG
   contactEmail: 'hello@digitalaka.com',
   social: {
     twitter: 'https://twitter.com/digitalaka',
     linkedin: 'https://linkedin.com/company/digitalaka',
     instagram: 'https://instagram.com/digitalaka',
+    whatsapp: 'https://wa.me/919876543210',
   },
 };
 
@@ -154,7 +155,7 @@ export const PORTFOLIO = [
 export const TESTIMONIALS = [
   {
     quote:
-      'Digital AKA transformed our outdated website into a lead-generation machine. Professional, fast, and creative.',
+      'digitalAka transformed our outdated website into a lead-generation machine. Professional, fast, and creative.',
     author: 'Mark R.',
     role: 'CEO, TechStartup',
   },
@@ -205,10 +206,10 @@ export const BLOG_POSTS = [
 
 // Contact page info
 export const CONTACT = {
-  heading: 'Let’s Work Together',
+  heading: "Let’s Work Together",
   subheading:
-    'Have a project in mind? Fill out the form and we’ll get back to you within 24 hours.',
-  email: 'hello@digitalaka.com',
-  phone: '+1 (555) 123-4567',
-  address: '123 Digital Street, San Francisco, CA 94107',
+    "Have a project in mind? Fill in the form and our team will get back to you within 24 hours.",
+  email: "hello@digitalaka.com",
+  phone: "+91 98765 43210",
+  address: "India - serving clients globally",
 };

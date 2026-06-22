@@ -5,7 +5,7 @@ import CTABanner from '@/components/sections/CTABanner';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn more about Digital AKA, our team, and our mission.',
+  description: 'Learn more about digitalAka, our team, and our mission.',
 };
 
 export default function AboutPage() {
@@ -13,11 +13,11 @@ export default function AboutPage() {
     <>
       <SectionWrapper>
         <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-          {ABOUT.heading}
+          {ABOUT.headline}
         </h1>
         <div className="mt-6 grid gap-12 lg:grid-cols-2">
           <div className="prose prose-lg text-gray-600">
-            <p>{ABOUT.story}</p>
+            <p>{ABOUT.subheadline}</p>
             <div className="mt-8 grid grid-cols-3 gap-4 text-center">
               {ABOUT.stats.map((stat) => (
                 <div key={stat.label}>

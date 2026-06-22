@@ -3,6 +3,8 @@ import { SITE } from '@/lib/constants';
 import { inter } from '@/lib/fonts';
 import Header from '@/components/Layout/Header';
 import Footer from '@/components/Layout/Footer';
+import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import NavigationProgress from '@/components/ui/NavigationProgress';
 
 // Default metadata for all pages
 export const metadata: Metadata = {
@@ -72,9 +74,11 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen flex-col font-sans">
+        <NavigationProgress />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
