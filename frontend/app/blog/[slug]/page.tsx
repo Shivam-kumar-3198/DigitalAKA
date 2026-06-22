@@ -5,6 +5,11 @@ import { getAllPostSlugs, getPostBySlug } from '@/lib/wordpress';
 import { yoastToMetadata, getJsonLd } from '@/lib/seo';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 
+// Revalidate statically-generated posts every hour; serve stale while regenerating
+export const revalidate = 3600;
+// Allow slugs not in generateStaticParams to be rendered on-demand (new posts after deploy)
+export const dynamicParams = true;
+
 interface Props {
   params: { slug: string };
 }

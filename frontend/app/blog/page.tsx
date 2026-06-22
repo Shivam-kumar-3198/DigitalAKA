@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { getAllPosts } from '@/lib/wordpress';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 
+// Cache the dynamic page on Vercel's edge for 1 hour, then revalidate in background
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'Blog',
   description: 'Insights, tips, and news from the digitalAka team.',
@@ -25,11 +28,15 @@ function formatDate(iso: string): string {
 }
 
 interface Props {
-  searchParams: { page?: string };
+  // Next.js types searchParams values as string | string[] | undefined
+  searchParams: { page?: string | string[] };
 }
 
 export default async function BlogPage({ searchParams }: Props) {
-  const currentPage = Math.max(1, parseInt(searchParams.page ?? '1', 10));
+  const rawPage = Array.isArray(searchParams.page)
+    ? searchParams.page[0]
+    : searchParams.page;
+  const currentPage = Math.max(1, parseInt(rawPage ?? '1', 10));
   const { posts, totalPages } = await getAllPosts({ page: currentPage, perPage: 9 });
 
   return (

@@ -2,6 +2,9 @@ import type { MetadataRoute } from 'next';
 import { getAllPosts, getAllPages } from '@/lib/wordpress';
 import { PORTFOLIO } from '@/lib/constants';
 
+// Regenerate the sitemap once per day in the background
+export const revalidate = 86400;
+
 const BASE_URL = 'https://digitalaka.com';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
