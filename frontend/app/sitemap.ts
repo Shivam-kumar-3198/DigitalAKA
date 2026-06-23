@@ -2,9 +2,6 @@ import type { MetadataRoute } from 'next';
 import { getAllPosts, getAllPages } from '@/lib/wordpress';
 import { PORTFOLIO } from '@/lib/constants';
 
-// Regenerate the sitemap once per day in the background
-export const revalidate = 86400;
-
 const BASE_URL = 'https://digitalaka.com';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -15,6 +12,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/portfolio`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
     { url: `${BASE_URL}/contact`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.5 },
+    { url: `${BASE_URL}/email-marketing`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE_URL}/bulk-email-services`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE_URL}/smtp-server-services`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE_URL}/bulk-sms-marketing`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE_URL}/voice-sms-service`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE_URL}/super-email-reseller`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE_URL}/bulk-email-reseller-plan`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE_URL}/smtp-inr-pricing`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE_URL}/bulk-email-services-plan`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE_URL}/voice-sms-service-plan`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE_URL}/seo-packages`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE_URL}/sms-plan`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
   ];
 
   const portfolioPages: MetadataRoute.Sitemap = PORTFOLIO.map((item) => ({
