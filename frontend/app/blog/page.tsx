@@ -4,9 +4,6 @@ import Link from 'next/link';
 import { getAllPosts } from '@/lib/wordpress';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 
-// Cache the dynamic page on Vercel's edge for 1 hour, then revalidate in background
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: 'Blog',
   description: 'Insights, tips, and news from the digitalAka team.',
@@ -27,17 +24,8 @@ function formatDate(iso: string): string {
   });
 }
 
-interface Props {
-  // Next.js types searchParams values as string | string[] | undefined
-  searchParams: { page?: string | string[] };
-}
-
-export default async function BlogPage({ searchParams }: Props) {
-  const rawPage = Array.isArray(searchParams.page)
-    ? searchParams.page[0]
-    : searchParams.page;
-  const currentPage = Math.max(1, parseInt(rawPage ?? '1', 10));
-  const { posts, totalPages } = await getAllPosts({ page: currentPage, perPage: 9 });
+export default async function BlogPage() {
+  const { posts } = await getAllPosts({ page: 1, perPage: 100 });
 
   return (
     <SectionWrapper>
@@ -96,33 +84,6 @@ export default async function BlogPage({ searchParams }: Props) {
             );
           })}
         </div>
-      )}
-
-      {totalPages > 1 && (
-        <nav
-          className="mt-12 flex items-center justify-center gap-4"
-          aria-label="Blog pagination"
-        >
-          {currentPage > 1 && (
-            <Link
-              href={`/blog?page=${currentPage - 1}`}
-              className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-            >
-              ← Previous
-            </Link>
-          )}
-          <span className="text-sm text-gray-600">
-            Page {currentPage} of {totalPages}
-          </span>
-          {currentPage < totalPages && (
-            <Link
-              href={`/blog?page=${currentPage + 1}`}
-              className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-            >
-              Next →
-            </Link>
-          )}
-        </nav>
       )}
     </SectionWrapper>
   );

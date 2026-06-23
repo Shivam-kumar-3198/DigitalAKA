@@ -4,6 +4,10 @@ import { notFound } from 'next/navigation';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import Button from '@/components/ui/Button';
 
+export function generateStaticParams() {
+  return PORTFOLIO.map((p) => ({ slug: p.slug }));
+}
+
 interface Props {
   params: { slug: string };
 }
