@@ -83,8 +83,9 @@ export default function VoiceSmsServicePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#fdf4ff] via-white to-[#eef2ff] pt-28 pb-16 sm:pt-32 sm:pb-20">
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(#e9d5ff_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />
+      <section className="relative overflow-hidden bg-[#fafcff] pt-28 pb-16 sm:pt-32 sm:pb-20">
+        <div aria-hidden className="pointer-events-none absolute top-0 inset-x-0 h-[450px] bg-gradient-to-b from-[#9333ea]/[0.05] to-transparent" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_40%,transparent_100%)] opacity-40" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-sm text-gray-500">
             <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>

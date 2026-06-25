@@ -84,25 +84,26 @@ export default function SmtpServerServicesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#f0f4ff] via-white to-[#eef2ff] pt-28 pb-16 sm:pt-32 sm:pb-20">
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(#c7d7fe_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />
+      <section className="relative overflow-hidden bg-[#fafcff] pt-28 pb-16 sm:pt-32 sm:pb-20">
+        <div aria-hidden className="pointer-events-none absolute top-0 inset-x-0 h-[450px] bg-gradient-to-b from-[#7c3aed]/[0.05] to-transparent" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_40%,transparent_100%)] opacity-40" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-sm text-gray-500">
-            <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
+            <Link href="/" className="hover:text-violet-600 transition-colors">Home</Link>
             <svg className="h-3.5 w-3.5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-            <Link href="/services" className="hover:text-blue-600 transition-colors">Services</Link>
+            <Link href="/services" className="hover:text-violet-600 transition-colors">Services</Link>
             <svg className="h-3.5 w-3.5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             <span className="font-medium text-gray-800">SMTP Server Services</span>
           </nav>
 
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-100 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700">
+              <span className="h-1.5 w-1.5 rounded-full bg-violet-500" />
               Enterprise-Grade Infrastructure
             </span>
             <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl">
               SMTP Server Services —{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
                 Built for Scale
               </span>
             </h1>
@@ -112,19 +113,19 @@ export default function SmtpServerServicesPage() {
 
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
               {STATS.map((s) => (
-                <div key={s.label} className="rounded-xl border border-blue-100 bg-white px-4 py-3 text-center shadow-sm">
-                  <div className="text-2xl font-extrabold text-blue-600">{s.value}</div>
+                <div key={s.label} className="rounded-xl border border-violet-100 bg-white px-4 py-3 text-center shadow-sm">
+                  <div className="text-2xl font-extrabold text-violet-600">{s.value}</div>
                   <div className="text-xs font-medium text-gray-500">{s.label}</div>
                 </div>
               ))}
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/contact" className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:-translate-y-0.5 hover:bg-blue-700">
+              <Link href="/contact" className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-600/25 transition hover:-translate-y-0.5 hover:bg-violet-700">
                 Get SMTP Server
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
-              <Link href="/smtp-inr-pricing" className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-7 py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700">
+              <Link href="/smtp-inr-pricing" className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-7 py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:border-violet-200 hover:bg-violet-50 hover:text-violet-700">
                 View Pricing
               </Link>
             </div>
@@ -147,7 +148,7 @@ export default function SmtpServerServicesPage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((f) => (
               <div key={f.title} className="rounded-2xl border border-gray-100 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-50 text-violet-600">
                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={f.icon} />
                   </svg>
@@ -161,12 +162,12 @@ export default function SmtpServerServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 py-16">
+      <section className="bg-gradient-to-r from-violet-600 to-indigo-700 py-16">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="text-3xl font-bold text-white">Need a Dedicated SMTP Server?</h2>
-          <p className="mt-4 text-lg text-blue-100">Get your server configured and live within 24 hours. Expert setup included.</p>
+          <p className="mt-4 text-lg text-violet-100">Get your server configured and live within 24 hours. Expert setup included.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="rounded-xl bg-white px-8 py-3 text-sm font-bold text-blue-700 transition hover:bg-blue-50">
+            <Link href="/contact" className="rounded-xl bg-white px-8 py-3 text-sm font-bold text-violet-700 transition hover:bg-violet-50">
               Request a Demo
             </Link>
             <a href="tel:+919876543210" className="rounded-xl border border-white/30 bg-white/10 px-8 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20">

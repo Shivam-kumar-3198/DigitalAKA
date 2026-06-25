@@ -106,8 +106,9 @@ export default function BulkEmailResellerPlanPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#f0fdf4] via-white to-[#eef2ff] pt-28 pb-16 sm:pt-32 sm:pb-20">
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(#bbf7d0_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />
+      <section className="relative overflow-hidden bg-[#fafcff] pt-28 pb-16 sm:pt-32 sm:pb-20">
+        <div aria-hidden className="pointer-events-none absolute top-0 inset-x-0 h-[450px] bg-gradient-to-b from-[#059669]/[0.05] to-transparent" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_40%,transparent_100%)] opacity-40" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-sm text-gray-500">
             <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
@@ -221,15 +222,15 @@ export default function BulkEmailResellerPlanPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-r from-emerald-600 to-blue-700 py-16">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <h2 className="text-3xl font-bold text-white">Ready to Start Reselling?</h2>
-          <p className="mt-4 text-lg text-emerald-100">Your reseller panel is ready in 24 hours. No tech skills needed.</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="rounded-xl bg-white px-8 py-3 text-sm font-bold text-blue-700 transition hover:bg-blue-50">
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
+          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Ready to Start Reselling?</h2>
+          <p className="mt-3 text-base text-gray-500">Your reseller panel is ready in 24 hours. No tech skills needed.</p>
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <Link href="/contact" className="w-full sm:w-auto rounded-full bg-[#1d5cf5] px-8 py-3 text-sm font-semibold text-white transition hover:bg-blue-700">
               Get Started Today
             </Link>
-            <a href="tel:+919876543210" className="rounded-xl border border-white/30 bg-white/10 px-8 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20">
+            <a href="tel:+919876543210" className="w-full sm:w-auto rounded-full border border-gray-200 px-8 py-3 text-sm font-semibold text-gray-600 transition hover:border-gray-300 hover:text-gray-900">
               Call +91 98765 43210
             </a>
           </div>

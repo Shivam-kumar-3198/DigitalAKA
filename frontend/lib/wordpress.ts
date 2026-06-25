@@ -100,24 +100,39 @@ export interface PaginatedPosts {
 
 export async function getAllPosts({
   page = 1,
-  perPage = 10,
+  perPage = 100, // Fetch up to 100 posts per request
+  fetchAll = false, // New option to fetch all posts
 } = {}): Promise<PaginatedPosts> {
+  const allPosts: WPPost[] = [];
+  let currentPage = page;
+  let totalPages = 1;
+
   try {
-    const res = await fetch(
-      `${API_URL}/posts?_embed&page=${page}&per_page=${perPage}&status=publish`,
-      { next: { revalidate: 3600 } },
-    );
+    do {
+      const res = await fetch(
+        `${API_URL}/posts?_embed&page=${currentPage}&per_page=${perPage}&status=publish`,
+        { cache: 'force-cache' },
+      );
 
-    if (!res.ok) {
-      console.error(`getAllPosts failed: ${res.status} ${res.statusText}`);
-      return { posts: [], totalPages: 0, total: 0 };
-    }
+      if (!res.ok) {
+        console.error(`getAllPosts page ${currentPage} failed: ${res.status} ${res.statusText}`);
+        break;
+      }
 
-    const posts: WPPost[] = await res.json();
-    const totalPages = parseInt(res.headers.get('X-WP-TotalPages') ?? '1', 10);
-    const total = parseInt(res.headers.get('X-WP-Total') ?? '0', 10);
+      const posts: WPPost[] = await res.json();
+      allPosts.push(...posts);
 
-    return { posts, totalPages, total };
+      totalPages = parseInt(res.headers.get('X-WP-TotalPages') ?? '1', 10);
+      const total = parseInt(res.headers.get('X-WP-Total') ?? '0', 10);
+
+      if (fetchAll) {
+        currentPage++;
+      } else {
+        return { posts, totalPages, total };
+      }
+    } while (fetchAll && currentPage <= totalPages);
+
+    return { posts: allPosts, totalPages, total: allPosts.length };
   } catch (err) {
     console.error('getAllPosts error:', err);
     return { posts: [], totalPages: 0, total: 0 };
@@ -128,7 +143,7 @@ export async function getPostBySlug(slug: string): Promise<WPPost | null> {
   try {
     const res = await fetch(
       `${API_URL}/posts?_embed&slug=${encodeURIComponent(slug)}&status=publish`,
-      { next: { revalidate: 3600 } },
+      { cache: 'force-cache' },
     );
 
     if (!res.ok) {
@@ -153,7 +168,7 @@ export async function getAllPostSlugs(): Promise<string[]> {
     do {
       const res = await fetch(
         `${API_URL}/posts?_fields=slug&per_page=100&page=${page}&status=publish`,
-        { next: { revalidate: 3600 } },
+        { cache: 'force-cache' },
       );
 
       if (!res.ok) {
@@ -197,7 +212,7 @@ export async function getPageBySlug(slug: string): Promise<WPPage | null> {
   try {
     const res = await fetch(
       `${API_URL}/pages?slug=${encodeURIComponent(slug)}&status=publish`,
-      { next: { revalidate: 3600 } },
+      { cache: 'force-cache' },
     );
 
     if (!res.ok) {
@@ -240,7 +255,7 @@ export async function getPostsByCategory(
   try {
     const res = await fetch(
       `${API_URL}/posts?_embed&categories=${categoryId}&page=${page}&per_page=${perPage}&status=publish`,
-      { next: { revalidate: 3600 } },
+      { cache: 'force-cache' },
     );
 
     if (!res.ok) {

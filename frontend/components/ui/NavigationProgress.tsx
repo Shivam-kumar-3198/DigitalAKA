@@ -9,6 +9,7 @@ export default function NavigationProgress() {
   const [phase, setPhase]                 = useState<"idle" | "running" | "done">("idle");
   const prevPath                          = useRef(pathname);
   const doneTimer                         = useRef<ReturnType<typeof setTimeout>>();
+  const navigating                        = useRef(false);
 
   /* ── Detect any internal-link click → start bar ── */
   useEffect(() => {
@@ -17,7 +18,6 @@ export default function NavigationProgress() {
       if (!anchor) return;
 
       const href = anchor.getAttribute("href") ?? "";
-      // Skip: empty, hash-only, external, mailto, tel
       if (
         !href ||
         href.startsWith("#") ||
@@ -25,20 +25,12 @@ export default function NavigationProgress() {
         href.startsWith("tel:") ||
         /^https?:\/\//.test(href)
       ) return;
-      // Skip same page
       if (href === pathname) return;
 
       clearTimeout(doneTimer.current);
-
-      // Reset to 0 without animation, then kick off crawl
-      setPhase("idle");
-      setWidth(0);
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() => {
-          setPhase("running");
-          setWidth(65);
-        }),
-      );
+      navigating.current = true;
+      setPhase("running");
+      setWidth(65);
     }
 
     document.addEventListener("click", onClick);
@@ -49,7 +41,8 @@ export default function NavigationProgress() {
   useEffect(() => {
     if (pathname === prevPath.current) return;
     prevPath.current = pathname;
-    if (phase !== "running") return;
+    if (!navigating.current) return;
+    navigating.current = false;
 
     setWidth(100);
     setPhase("done");
@@ -59,7 +52,7 @@ export default function NavigationProgress() {
     }, 500);
 
     return () => clearTimeout(doneTimer.current);
-  }, [pathname, phase]);
+  }, [pathname]);
 
   return (
     <div

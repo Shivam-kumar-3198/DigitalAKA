@@ -196,19 +196,20 @@ export default function EmailMarketingPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#f0f5ff] via-white to-[#eef2ff] pt-28 pb-14 sm:pt-32 sm:pb-16">
+      <section className="relative overflow-hidden bg-[#fafcff] pt-28 pb-14 sm:pt-32 sm:pb-16">
+        <div aria-hidden className="pointer-events-none absolute top-0 inset-x-0 h-[450px] bg-gradient-to-b from-[#0d9488]/[0.05] to-transparent" />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(#c7d7fe_1px,transparent_1px)] [background-size:28px_28px] opacity-40"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_40%,transparent_100%)] opacity-40"
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-sm text-gray-500">
-            <Link href="/" className="transition-colors hover:text-blue-600">Home</Link>
+            <Link href="/" className="transition-colors hover:text-teal-600">Home</Link>
             <svg className="h-3.5 w-3.5 flex-shrink-0 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
-            <Link href="/services" className="transition-colors hover:text-blue-600">Services</Link>
+            <Link href="/services" className="transition-colors hover:text-teal-600">Services</Link>
             <svg className="h-3.5 w-3.5 flex-shrink-0 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
@@ -216,14 +217,14 @@ export default function EmailMarketingPage() {
           </nav>
 
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-              <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-teal-100 bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">
+              <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
               #1 Bulk Email Provider in India
             </span>
 
             <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-[3.25rem]">
               Bulk Email Services{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">
                 Provider in India
               </span>
             </h1>
@@ -248,7 +249,7 @@ export default function EmailMarketingPage() {
                 { value: '7+', label: 'Years Experience' },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <div className="text-2xl font-extrabold text-blue-600">{stat.value}</div>
+                  <div className="text-2xl font-extrabold text-teal-600">{stat.value}</div>
                   <div className="text-xs font-medium text-gray-500">{stat.label}</div>
                 </div>
               ))}
@@ -258,7 +259,7 @@ export default function EmailMarketingPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/30"
+                className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-600/25 transition hover:-translate-y-0.5 hover:bg-teal-700 hover:shadow-xl hover:shadow-teal-600/30"
               >
                 Get A Free Quote
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -267,7 +268,7 @@ export default function EmailMarketingPage() {
               </Link>
               <a
                 href="tel:+919876543210"
-                className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-7 py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+                className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-7 py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-200 hover:bg-teal-50 hover:text-teal-700"
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -306,12 +307,12 @@ export default function EmailMarketingPage() {
                     className="scroll-mt-28 rounded-2xl border border-gray-100 bg-white p-7 shadow-sm transition hover:shadow-md"
                   >
                     <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-teal-50 text-teal-600">
                         {feature.icon}
                       </div>
                       <div>
                         <h4 className="text-lg font-bold text-gray-900">
-                          <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-[11px] font-bold text-white">
+                          <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-teal-600 text-[11px] font-bold text-white">
                             {i + 1}
                           </span>
                           {feature.title}
@@ -326,7 +327,7 @@ export default function EmailMarketingPage() {
 
             {/* Author Byline */}
             <div className="mt-12 flex items-center gap-4 rounded-2xl border border-gray-100 bg-gray-50 px-6 py-4">
-              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white shadow-sm">
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-teal-600 text-sm font-bold text-white shadow-sm">
                 A
               </div>
               <div>

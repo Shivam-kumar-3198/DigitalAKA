@@ -5,8 +5,6 @@ import { getAllPostSlugs, getPostBySlug } from '@/lib/wordpress';
 import { yoastToMetadata, getJsonLd } from '@/lib/seo';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 
-export const dynamicParams = false;
-
 interface Props {
   params: { slug: string };
 }
@@ -35,6 +33,12 @@ function formatDate(iso: string): string {
     month: 'long',
     day: 'numeric',
   });
+}
+
+// Replace all absolute digitalaka.com URLs in WordPress HTML with relative paths
+// so TOC anchor links and internal links don't navigate away to the WordPress site.
+function sanitizeContent(html: string): string {
+  return html.replace(/https?:\/\/digitalaka\.com/g, '');
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -83,7 +87,7 @@ export default async function BlogPostPage({ params }: Props) {
           {/* WordPress block markup, Yoast FAQ schema, and TOC blocks are preserved intact */}
           <div
             className="prose prose-lg mt-8 max-w-none text-gray-700"
-            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+            dangerouslySetInnerHTML={{ __html: sanitizeContent(post.content.rendered) }}
           />
         </article>
       </SectionWrapper>
