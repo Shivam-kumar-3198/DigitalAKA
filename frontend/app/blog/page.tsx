@@ -25,7 +25,7 @@ function formatDate(iso: string): string {
 }
 
 export default async function BlogPage() {
-  const { posts } = await getAllPosts({ page: 1, perPage: 100 });
+  const { posts } = await getAllPosts({ fetchAll: true, perPage: 100 });
 
   return (
     <SectionWrapper>
@@ -38,7 +38,7 @@ export default async function BlogPage() {
         <p className="mt-12 text-gray-500">No posts found.</p>
       ) : (
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => {
+          {posts.map((post, index) => {
             const media = post._embedded?.['wp:featuredmedia']?.[0];
             const author = post._embedded?.author?.[0];
             const excerpt = stripHtml(post.excerpt.rendered);
@@ -57,6 +57,7 @@ export default async function BlogPage() {
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover"
+                      priority={index < 6}
                     />
                   ) : (
                     <div className="flex h-full items-center justify-center text-sm text-gray-400">

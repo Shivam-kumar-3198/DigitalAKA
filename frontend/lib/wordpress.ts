@@ -98,41 +98,48 @@ export interface PaginatedPosts {
 
 // ─── Posts ────────────────────────────────────────────────────────────────────
 
+// Fields needed for the listing page — omits content, modified, meta, tags, etc.
+const LISTING_FIELDS = 'id,slug,title,excerpt,date,_links';
+
+function buildPostsUrl(page: number, perPage: number, fields?: string): string {
+  let url = `${API_URL}/posts?_embed&page=${page}&per_page=${perPage}&status=publish`;
+  if (fields) url += `&_fields=${fields}`;
+  return url;
+}
+
 export async function getAllPosts({
   page = 1,
-  perPage = 100, // Fetch up to 100 posts per request
-  fetchAll = false, // New option to fetch all posts
+  perPage = 100,
+  fetchAll = false,
+  fields = LISTING_FIELDS,
 } = {}): Promise<PaginatedPosts> {
-  const allPosts: WPPost[] = [];
-  let currentPage = page;
-  let totalPages = 1;
-
   try {
-    do {
-      const res = await fetch(
-        `${API_URL}/posts?_embed&page=${currentPage}&per_page=${perPage}&status=publish`,
-        { cache: 'force-cache' },
-      );
+    // Always fetch page 1 first to discover totalPages
+    const firstRes = await fetch(buildPostsUrl(page, perPage, fields), { cache: 'force-cache' });
 
-      if (!res.ok) {
-        console.error(`getAllPosts page ${currentPage} failed: ${res.status} ${res.statusText}`);
-        break;
-      }
+    if (!firstRes.ok) {
+      console.error(`getAllPosts page ${page} failed: ${firstRes.status} ${firstRes.statusText}`);
+      return { posts: [], totalPages: 0, total: 0 };
+    }
 
-      const posts: WPPost[] = await res.json();
-      allPosts.push(...posts);
+    const firstBatch: WPPost[] = await firstRes.json();
+    const totalPages = parseInt(firstRes.headers.get('X-WP-TotalPages') ?? '1', 10);
+    const total = parseInt(firstRes.headers.get('X-WP-Total') ?? '0', 10);
 
-      totalPages = parseInt(res.headers.get('X-WP-TotalPages') ?? '1', 10);
-      const total = parseInt(res.headers.get('X-WP-Total') ?? '0', 10);
+    if (!fetchAll || totalPages <= 1) {
+      return { posts: firstBatch, totalPages, total };
+    }
 
-      if (fetchAll) {
-        currentPage++;
-      } else {
-        return { posts, totalPages, total };
-      }
-    } while (fetchAll && currentPage <= totalPages);
+    // Fetch all remaining pages in parallel — no more sequential waterfall
+    const remainingBatches = await Promise.all(
+      Array.from({ length: totalPages - 1 }, (_, i) =>
+        fetch(buildPostsUrl(page + i + 1, perPage, fields), { cache: 'force-cache' })
+          .then((r) => (r.ok ? (r.json() as Promise<WPPost[]>) : []))
+          .catch(() => [] as WPPost[]),
+      ),
+    );
 
-    return { posts: allPosts, totalPages, total: allPosts.length };
+    return { posts: [firstBatch, ...remainingBatches].flat(), totalPages, total };
   } catch (err) {
     console.error('getAllPosts error:', err);
     return { posts: [], totalPages: 0, total: 0 };

@@ -35,10 +35,17 @@ function formatDate(iso: string): string {
   });
 }
 
-// Replace all absolute digitalaka.com URLs in WordPress HTML with relative paths
-// so TOC anchor links and internal links don't navigate away to the WordPress site.
 function sanitizeContent(html: string): string {
-  return html.replace(/https?:\/\/digitalaka\.com/g, '');
+  return html
+    // Remove SVG icons — these are always plugin UI controls (toggle/drag/collapse), never real content
+    .replace(/<svg[\s\S]*?<\/svg>/gi, '')
+    // Remove empty anchor tags left behind after SVG removal
+    .replace(/<a[^>]*>\s*<\/a>/gi, '')
+    // TOC / same-page anchors: "https://digitalaka.com/post/#section" → "#section"
+    .replace(/href="https?:\/\/digitalaka\.com[^"#]*#([^"]+)"/g, 'href="#$1"')
+    // Internal post links without anchor: remap to /blog/slug
+    .replace(/href="https?:\/\/digitalaka\.com\/([^"]+)"/g, 'href="/blog/$1"');
+  // src= attributes are intentionally untouched — images must keep their full URL
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -62,16 +69,16 @@ export default async function BlogPostPage({ params }: Props) {
       <SectionWrapper>
         <article className="mx-auto max-w-3xl">
           {media?.source_url && (
-            <div className="relative mb-8 h-72 w-full overflow-hidden rounded-xl">
-              <Image
-                src={media.source_url}
-                alt={media.alt_text || post.title.rendered}
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="object-cover"
-              />
-            </div>
+            <Image
+              src={media.source_url}
+              alt={media.alt_text || post.title.rendered}
+              width={896}
+              height={504}
+              priority
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="mb-10 w-full rounded-2xl shadow-md"
+              style={{ height: 'auto' }}
+            />
           )}
 
           <p className="text-sm text-gray-500">
@@ -84,9 +91,8 @@ export default async function BlogPostPage({ params }: Props) {
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           />
 
-          {/* WordPress block markup, Yoast FAQ schema, and TOC blocks are preserved intact */}
           <div
-            className="prose prose-lg mt-8 max-w-none text-gray-700"
+            className="prose prose-lg mt-8 max-w-none text-gray-700 prose-img:mx-auto prose-img:rounded-xl prose-img:max-w-full prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline"
             dangerouslySetInnerHTML={{ __html: sanitizeContent(post.content.rendered) }}
           />
         </article>

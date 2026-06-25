@@ -3,9 +3,13 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Search as SearchIcon, X, FileText, Loader2 } from 'lucide-react';
-import { getAllPosts, type Post } from '@/lib/wordpress';
+import { getAllPosts } from '@/lib/wordpress';
 
-type BlogPost = Pick<Post, 'slug' | 'title' | 'excerpt'>;
+interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+}
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;

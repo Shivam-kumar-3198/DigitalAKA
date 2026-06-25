@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import './globals.css';
 import { SITE } from '@/lib/constants';
 import { inter } from '@/lib/fonts';
 import Header from '@/components/Layout/Header';
@@ -56,9 +57,6 @@ const jsonLd = {
   sameAs: [SITE.social.twitter, SITE.social.linkedin, SITE.social.instagram],
 };
 
-// Import global styles after other imports
-import './globals.css';
-
 export default function RootLayout({
   children,
 }: {
@@ -78,7 +76,7 @@ export default function RootLayout({
         <PageLoader />
         <NavigationProgress />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-16 sm:pt-20">{children}</main>
         <Footer />
         <WhatsAppButton />
       </body>

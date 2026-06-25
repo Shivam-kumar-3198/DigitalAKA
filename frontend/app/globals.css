@@ -2,3 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── WordPress blog post content ───────────────────────────────────────── */
+
+/* Hide TOC plugin toggle/collapse/drag controls — they rely on WP theme CSS */
+.prose .ez-toc-toggle,
+.prose .ez-toc-title-toggle,
+.prose [class*="toc-toggle"],
+.prose [class*="toc-collapse"],
+.prose [class*="toc-expand"],
+.prose .rank-math-toc__toggle,
+.prose .uagb-toc__collapse-button,
+.prose .ub-table-of-contents-toggle-button,
+.prose .kt-table-of-content-toggle {
+  display: none !important;
+}
+
+/* Style the TOC container */
+.prose #ez-toc-container,
+.prose .ez-toc-container,
+.prose .wp-block-rank-math-toc-block,
+.prose .uagb-toc__wrap,
+.prose .kt-table-of-content-wrap {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* TOC list reset */
+.prose .ez-toc-list,
+.prose .ez-toc-list-level-1 {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-top: 0.5rem !important;
+}
+
+.prose .ez-toc-list-level-2 {
+  padding-left: 1rem !important;
+}
+
