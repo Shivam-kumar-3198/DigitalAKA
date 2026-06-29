@@ -1,0 +1,72 @@
+{
+  "name": "v0-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/main.js",
+    "dev": "ts-node -r tsconfig-paths/register src/main.ts",
+    "build": "tsc",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write src",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shivam-kumar-3198/DigitalAKA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Shivam-kumar-3198/DigitalAKA/issues"
+  },
+  "homepage": "https://github.com/Shivam-kumar-3198/DigitalAKA#readme",
+  "dependencies": {
+    "@cloudinary/url-gen": "^1.22.0",
+    "@nestjs/cache-manager": "^2.1.1",
+    "@nestjs/common": "^11.1.27",
+    "@nestjs/config": "^4.0.4",
+    "@nestjs/core": "^11.1.27",
+    "@nestjs/jwt": "^11.0.2",
+    "@nestjs/mongoose": "^11.0.4",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^11.1.27",
+    "@nestjs/swagger": "^11.4.4",
+    "@nestjs/throttler": "^6.5.0",
+    "@types/express": "^5.0.6",
+    "bcryptjs": "^3.0.3",
+    "cache-manager": "^5.4.0",
+    "cache-manager-redis-store": "^3.0.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "cloudinary": "^2.10.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "helmet": "^8.2.0",
+    "ioredis": "^5.11.1",
+    "mongoose": "^9.7.3",
+    "nodemailer": "^9.0.1",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "redis": "^5.12.1",
+    "typeorm": "^1.0.0",
+    "winston": "^3.19.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.0.1",
+    "eslint": "^10.6.0",
+    "jest": "^30.4.2",
+    "prettier": "^3.9.1",
+    "ts-jest": "^29.4.11",
+    "ts-loader": "^9.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}
