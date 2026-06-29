@@ -62,7 +62,7 @@ export default function VoiceSmsServicePlanPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#fdf4ff] via-white to-[#eef2ff] pt-28 pb-16 sm:pt-32 sm:pb-20">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#fdf4ff] via-white to-[#eef2ff] -mt-20 pt-28 pb-16 sm:pb-20">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(#e9d5ff_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <nav aria-label="Breadcrumb" className="mb-6 flex items-center justify-center gap-1.5 text-sm text-gray-500">

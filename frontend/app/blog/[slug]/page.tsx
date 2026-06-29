@@ -66,7 +66,7 @@ export default async function BlogPostPage({ params }: Props) {
         />
       )}
 
-      <SectionWrapper>
+      <SectionWrapper className="-mt-20 pt-28">
         <article className="mx-auto max-w-3xl">
           {media?.source_url && (
             <Image

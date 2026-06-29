@@ -22,10 +22,11 @@ export default function Search({ isOpen, onClose }: SearchModalProps) {
   const [isLoading, setIsLoading] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Fetch all posts once when the component mounts
   useEffect(() => {
     const fetchPosts = async () => {
       setIsLoading(true);
-      const { posts: allPostsData } = await getAllPosts({ fetchAll: true });
+      const { posts: allPostsData } = await getAllPosts({ fetchAll: true, embed: false, fields: 'slug,title,excerpt' });
       const simplifiedPosts = allPostsData.map(p => ({ slug: p.slug, title: p.title.rendered, excerpt: p.excerpt.rendered.replace(/<[^>]*>/g, '') }));
       setAllPosts(simplifiedPosts);
       setResults(simplifiedPosts.slice(0, 10)); // Show recent posts initially

@@ -196,7 +196,7 @@ export default function EmailMarketingPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#fafcff] pt-28 pb-14 sm:pt-32 sm:pb-16">
+      <section className="relative overflow-hidden bg-[#fafcff] -mt-20 pt-28 pb-14 sm:pb-16">
         <div aria-hidden className="pointer-events-none absolute top-0 inset-x-0 h-[450px] bg-gradient-to-b from-[#0d9488]/[0.05] to-transparent" />
         <div
           aria-hidden

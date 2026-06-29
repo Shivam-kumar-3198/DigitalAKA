@@ -101,8 +101,8 @@ export interface PaginatedPosts {
 // Fields needed for the listing page — omits content, modified, meta, tags, etc.
 const LISTING_FIELDS = 'id,slug,title,excerpt,date,_links';
 
-function buildPostsUrl(page: number, perPage: number, fields?: string): string {
-  let url = `${API_URL}/posts?_embed&page=${page}&per_page=${perPage}&status=publish`;
+function buildPostsUrl(page: number, perPage: number, fields?: string, embed = true): string {
+  let url = `${API_URL}/posts?${embed ? '_embed&' : ''}page=${page}&per_page=${perPage}&status=publish`;
   if (fields) url += `&_fields=${fields}`;
   return url;
 }
@@ -112,10 +112,14 @@ export async function getAllPosts({
   perPage = 100,
   fetchAll = false,
   fields = LISTING_FIELDS,
+  embed = true,
 } = {}): Promise<PaginatedPosts> {
   try {
     // Always fetch page 1 first to discover totalPages
-    const firstRes = await fetch(buildPostsUrl(page, perPage, fields), { cache: 'force-cache' });
+    const fetchOptions: RequestInit = fetchAll
+      ? { cache: 'no-store' } // Disable cache for large requests to avoid 2MB limit
+      : { cache: 'force-cache' };
+    const firstRes = await fetch(buildPostsUrl(page, perPage, fields, embed), fetchOptions);
 
     if (!firstRes.ok) {
       console.error(`getAllPosts page ${page} failed: ${firstRes.status} ${firstRes.statusText}`);
@@ -133,7 +137,7 @@ export async function getAllPosts({
     // Fetch all remaining pages in parallel — no more sequential waterfall
     const remainingBatches = await Promise.all(
       Array.from({ length: totalPages - 1 }, (_, i) =>
-        fetch(buildPostsUrl(page + i + 1, perPage, fields), { cache: 'force-cache' })
+        fetch(buildPostsUrl(page + i + 1, perPage, fields, embed), fetchOptions)
           .then((r) => (r.ok ? (r.json() as Promise<WPPost[]>) : []))
           .catch(() => [] as WPPost[]),
       ),
@@ -167,32 +171,40 @@ export async function getPostBySlug(slug: string): Promise<WPPost | null> {
 }
 
 export async function getAllPostSlugs(): Promise<string[]> {
-  const slugs: string[] = [];
-  let page = 1;
-  let totalPages = 1;
-
   try {
-    do {
-      const res = await fetch(
-        `${API_URL}/posts?_fields=slug&per_page=100&page=${page}&status=publish`,
-        { cache: 'force-cache' },
-      );
+    const firstRes = await fetch(
+      `${API_URL}/posts?_fields=slug&per_page=100&page=1&status=publish`,
+      { cache: 'force-cache' },
+    );
 
-      if (!res.ok) {
-        console.error(`getAllPostSlugs page ${page} failed: ${res.status}`);
-        break;
-      }
+    if (!firstRes.ok) {
+      console.error(`getAllPostSlugs page 1 failed: ${firstRes.status}`);
+      return [];
+    }
 
-      const posts: Pick<WPPost, 'slug'>[] = await res.json();
-      slugs.push(...posts.map((p) => p.slug));
-      totalPages = parseInt(res.headers.get('X-WP-TotalPages') ?? '1', 10);
-      page++;
-    } while (page <= totalPages);
+    const firstBatch: Pick<WPPost, 'slug'>[] = await firstRes.json();
+    const totalPages = parseInt(firstRes.headers.get('X-WP-TotalPages') ?? '1', 10);
+
+    if (totalPages <= 1) {
+      return firstBatch.map((p) => p.slug);
+    }
+
+    const remainingBatches = await Promise.all(
+      Array.from({ length: totalPages - 1 }, (_, i) =>
+        fetch(
+          `${API_URL}/posts?_fields=slug&per_page=100&page=${i + 2}&status=publish`,
+          { cache: 'force-cache' },
+        )
+          .then((r) => (r.ok ? (r.json() as Promise<Pick<WPPost, 'slug'>[]>) : []))
+          .catch(() => [] as Pick<WPPost, 'slug'>[]),
+      ),
+    );
+
+    return [firstBatch, ...remainingBatches].flat().map((p) => p.slug);
   } catch (err) {
     console.error('getAllPostSlugs error:', err);
+    return [];
   }
-
-  return slugs;
 }
 
 // ─── Pages ────────────────────────────────────────────────────────────────────
