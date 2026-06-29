@@ -7,6 +7,7 @@ import Footer from '@/components/Layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import NavigationProgress from '@/components/ui/NavigationProgress';
 import PageLoader from '@/components/PageLoader';
+import { AuthProvider } from '@/context/auth-context';
 
 // Default metadata for all pages
 export const metadata: Metadata = {
@@ -73,12 +74,14 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen flex-col font-sans">
-        <PageLoader />
-        <NavigationProgress />
-        <Header />
-        <main className="flex-1 pt-20">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <AuthProvider>
+          <PageLoader />
+          <NavigationProgress />
+          <Header />
+          <main className="flex-1 pt-20">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+        </AuthProvider>
       </body>
     </html>
   );
