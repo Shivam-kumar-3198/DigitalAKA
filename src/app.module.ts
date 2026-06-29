@@ -18,6 +18,14 @@ import { UsersModule } from './modules/users/users.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { PermissionsModule } from './modules/permissions/permissions.module';
 import { CommonModule } from './common/common.module';
+import { BlogsModule } from './modules/blogs/blogs.module';
+import { CategoriesModule } from './modules/categories/categories.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { TagsModule } from './modules/tags/tags.module';
+import { PagesModule } from './modules/pages/pages.module';
+import { MediaModule } from './modules/media/media.module';
+import { SeoModule } from './modules/seo/seo.module';
+import { AiModule } from './modules/ai/ai.module';
 
 @Module({
   imports: [
@@ -61,8 +69,15 @@ import { CommonModule } from './common/common.module';
     UsersModule,
     RolesModule,
     PermissionsModule,
+    BlogsModule,
+    CategoriesModule,
+    AdminModule,
+    TagsModule,
+    PagesModule,
+    MediaModule,
+    SeoModule,
+    AiModule,
     // Future modules will be added here:
-    // CmsModule,
     // SeoModule,
     // AiModule,
     // CrmModule,
