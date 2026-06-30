@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 const SUBJECTS = [
   "SMTP Server",
@@ -23,8 +25,9 @@ export default function ContactForm() {
     subject: "",
     message: "",
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading]   = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError]         = useState("");
 
   function handleChange(
     e: React.ChangeEvent<
@@ -37,10 +40,19 @@ export default function ContactForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    console.log("Contact form:", form);
-    setLoading(false);
-    setSubmitted(true);
+    setError("");
+    try {
+      await addDoc(collection(db, "contacts"), {
+        ...form,
+        read: false,
+        createdAt: serverTimestamp(),
+      });
+      setSubmitted(true);
+    } catch {
+      setError("Failed to send your message. Please try again or email us directly.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -171,6 +183,12 @@ export default function ContactForm() {
           className={inputClass + " resize-none"}
         />
       </div>
+
+      {error && (
+        <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+          {error}
+        </p>
+      )}
 
       <button
         type="submit"

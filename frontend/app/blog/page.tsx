@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/wordpress';
 import SectionWrapper from '@/components/ui/SectionWrapper';
+import CTABanner from '@/components/sections/CTABanner';
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -28,6 +29,7 @@ export default async function BlogPage() {
   const { posts } = await getAllPosts({ fetchAll: true, perPage: 100 });
 
   return (
+    <>
     <SectionWrapper>
       <h1 className="text-4xl font-bold tracking-tight text-gray-900">Blog</h1>
       <p className="mt-4 text-lg text-gray-600">
@@ -87,5 +89,7 @@ export default async function BlogPage() {
         </div>
       )}
     </SectionWrapper>
+    <CTABanner />
+    </>
   );
 }

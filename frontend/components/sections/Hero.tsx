@@ -13,14 +13,14 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[100dvh] overflow-hidden bg-[#fafcff] pt-24 sm:pt-28 pb-16 sm:pb-20 text-slate-900 selection:bg-[#1d5cf5] selection:text-white">
+    <section className="relative flex w-full min-h-[100dvh] flex-col justify-center overflow-hidden bg-[#fafcff] -mt-20 pt-20 pb-16 text-slate-900 selection:bg-[#1d5cf5] selection:text-white sm:pb-20">
       
       {/* =========================================
           AMBIENT BACKGROUND
           ========================================= */}
       <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
         <div className="absolute top-0 w-full h-[500px] sm:h-[700px] bg-gradient-to-b from-[#1d5cf5]/[0.03] to-transparent"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] sm:[background-size:32px_32px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_30%,#000_60%,transparent_100%)] opacity-40"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_30%,#000_60%,transparent_100%)] opacity-40 sm:[background-size:32px_32px]"></div>
       </div>
 
       {/* =========================================
@@ -28,9 +28,9 @@ export default function Hero() {
           ========================================= */}
       <div className="relative z-20 mx-auto max-w-[900px] px-4 sm:px-6 text-center">
         <h1 
-          className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-slate-900 leading-[1.15] sm:leading-[1.1] transition-all duration-1000 transform-gpu ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+          className={`mt-4 text-3xl font-extrabold leading-[1.15] tracking-tight text-slate-900 transition-all duration-1000 [transform:translate3d(0,0,0)] sm:text-4xl md:text-5xl lg:text-[3.25rem] sm:leading-[1.1] ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
         >
-          Enterprise SMTP & Bulk Email <br className="hidden md:block" />
+          Enterprise SMTP &amp; Bulk Email <br className="hidden md:block" />
           <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#1d5cf5] via-blue-500 to-cyan-500 pb-1 pr-1">
             Delivery Infrastructure.
           </span>

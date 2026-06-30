@@ -222,7 +222,7 @@ export default function CompleteSolutions() {
         {/* INTERACTIVE STAGE (TABS REDESIGNED) */}
         <div className="rounded-2xl border border-slate-200 bg-white shadow-sm sm:rounded-[2rem]">
           <div className="grid grid-cols-1 lg:grid-cols-12 lg:divide-x lg:divide-slate-200">
-            
+
             {/* Nav Index */}
             <div className="flex overflow-x-auto border-b border-slate-200 p-2 scrollbar-hide lg:col-span-4 lg:flex-col lg:border-b-0 lg:p-6">
               {TABS_DATA.map((tab) => {
@@ -232,8 +232,8 @@ export default function CompleteSolutions() {
                     key={tab.id}
                     onClick={() => handleTabClick(tab.id)}
                     className={`flex shrink-0 items-center justify-between whitespace-nowrap rounded-lg px-4 py-3 text-left transition-all sm:rounded-xl sm:px-5 sm:py-3.5 ${
-                      isActive 
-                        ? 'bg-blue-50/50 text-blue-700' 
+                      isActive
+                        ? 'bg-blue-50/50 text-blue-700'
                         : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
                     }`}
                   >
@@ -245,30 +245,28 @@ export default function CompleteSolutions() {
             </div>
 
             {/* Presentation Stage - Tighter padding for laptop screen containment */}
-            <div className="flex flex-col p-4 sm:p-8 lg:col-span-8 lg:p-10">
-              
-              {/* FIXED: Removed `aspect-video` and used explicit `h-` classes so content NEVER clips */}
-              <div className="relative mb-6 flex h-[260px] w-full items-center justify-center overflow-hidden rounded-xl border border-slate-100 bg-[#fafafa] shadow-inner sm:mb-8 sm:h-[320px] sm:rounded-2xl lg:h-[360px]">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:24px_24px] sm:bg-[size:32px_32px]" />
-                <div className="relative z-10 flex w-full items-center justify-center px-4">
-                  <ActiveVisual />
+            <div className="grid grid-cols-1 items-center gap-6 p-4 sm:p-8 lg:col-span-8 lg:grid-cols-2 lg:gap-12 lg:p-10">
+              <div className="relative flex h-[260px] w-full items-center justify-center sm:h-[320px] lg:h-full">
+                <div className="relative z-10 flex w-full items-center justify-center">
+                    <ActiveVisual />
                 </div>
               </div>
-              
-              <div key={activeData.id} className="motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2 motion-safe:duration-500">
-                <div className="mb-2 flex items-center gap-2 sm:mb-3 sm:gap-3">
-                  <CheckCircle2 className="h-4 w-4 text-blue-600 sm:h-5 sm:w-5" />
-                  <h3 className="text-base font-bold text-slate-900 sm:text-xl lg:text-2xl">{activeData.title}</h3>
+
+              <div className="flex flex-col items-start">
+                <div key={activeData.id} className="motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2 motion-safe:duration-500">
+                  <div className="mb-2 flex items-center gap-2 sm:mb-3 sm:gap-3">
+                    <CheckCircle2 className="h-4 w-4 text-blue-600 sm:h-5 sm:w-5" />
+                    <h3 className="text-base font-bold text-slate-900 sm:text-xl lg:text-2xl">{activeData.title}</h3>
+                  </div>
+                  <p className="mb-5 max-w-2xl text-xs leading-relaxed text-slate-500 sm:mb-6 sm:text-sm lg:text-base">
+                    {activeData.description}
+                  </p>
+                  <Link href={activeData.href} className="inline-block rounded-lg bg-slate-900 px-5 py-2.5 text-xs font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/25 sm:rounded-xl sm:px-6 sm:py-3 sm:text-sm">
+                    Deploy {activeData.label}
+                  </Link>
                 </div>
-                <p className="mb-5 max-w-2xl text-xs leading-relaxed text-slate-500 sm:mb-6 sm:text-sm lg:text-base">
-                  {activeData.description}
-                </p>
-                <Link href={activeData.href} className="inline-block rounded-lg bg-slate-900 px-5 py-2.5 text-xs font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/25 sm:rounded-xl sm:px-6 sm:py-3 sm:text-sm">
-                  Deploy {activeData.label}
-                </Link>
               </div>
             </div>
-            
           </div>
         </div>
 

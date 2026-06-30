@@ -2,13 +2,10 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { SITE } from '@/lib/constants';
 import { inter } from '@/lib/fonts';
-import Header from '@/components/Layout/Header';
-import Footer from '@/components/Layout/Footer';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
-import NavigationProgress from '@/components/ui/NavigationProgress';
+import { AuthProvider } from '@/contexts/AuthContext';
+import ConditionalPublicLayout from '@/components/Layout/ConditionalPublicLayout';
 import PageLoader from '@/components/PageLoader';
 
-// Default metadata for all pages
 export const metadata: Metadata = {
   title: {
     default: SITE.name,
@@ -42,7 +39,6 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD structured data for Organization
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -66,7 +62,6 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} light`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        {/* Inject JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -74,11 +69,11 @@ export default function RootLayout({
       </head>
       <body className="flex min-h-screen flex-col font-sans">
         <PageLoader />
-        <NavigationProgress />
-        <Header />
-        <main className="flex-1 pt-20">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <AuthProvider>
+          <ConditionalPublicLayout>
+            {children}
+          </ConditionalPublicLayout>
+        </AuthProvider>
       </body>
     </html>
   );

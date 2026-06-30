@@ -84,7 +84,7 @@ export default function FeaturesAndBenefits() {
       {/* =========================================
           1. FEATURES SECTION
       ========================================= */}
-      <section className="relative w-full py-20 sm:py-32 overflow-hidden border-b border-slate-100 bg-white">
+      <section className="relative w-full pt-16 sm:pt-24 pb-20 sm:pb-32 overflow-hidden border-b border-slate-100 bg-white">
         {/* Soft Background Accent */}
         <div className="absolute inset-0 z-0 pointer-events-none flex justify-center">
           <div className="h-[600px] w-full max-w-5xl bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-50/50 via-transparent to-transparent opacity-70"></div>
@@ -136,7 +136,7 @@ export default function FeaturesAndBenefits() {
       {/* =========================================
           2. WHY CHOOSE US SECTION
       ========================================= */}
-      <section className="relative w-full py-20 sm:py-32 bg-slate-50/50">
+      <section className="relative w-full pt-16 sm:pt-24 pb-20 sm:pb-32 bg-slate-50/50">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           
           {/* Section Header */}

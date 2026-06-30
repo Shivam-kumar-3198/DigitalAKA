@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Search from './Search';
 import MobileMenu from './MobileMenu';
-import Button from '@/components/ui/Button';
+import { Keyboard } from 'lucide-react';
 
 const NAVIGATION = [
   { label: 'Home', href: '/' },
@@ -12,6 +12,7 @@ const NAVIGATION = [
     label: 'Services',
     href: '/bulk-email-services',
     dropdown: [
+      { label: 'All Services', href: '/services' },
       { label: 'Bulk Email Services', href: '/bulk-email-services' },
       { label: 'SMTP Server Services', href: '/smtp-server-services' },
       { label: 'Email Marketing', href: '/email-marketing' },
@@ -143,28 +144,25 @@ export default function Header() {
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            <span className="hidden rounded-md border border-gray-200 bg-gray-50 px-1.5 py-0.5 text-xs font-mono text-gray-400 lg:block">
-              ⌘K
-            </span>
+            <Keyboard className="hidden h-5 w-5 text-gray-400 lg:block" />
           </button>
 
           <div className="h-5 w-px bg-gray-200/80" />
 
-          <Button
+          <Link
             href="/contact"
-            size="sm"
-            className="group relative overflow-hidden rounded-xl bg-[#1d5cf5] px-6 py-2.5 text-[14px] font-semibold text-white shadow-[0_4px_14px_0_rgba(29,92,245,0.39)] transition-all hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-[0_6px_20px_rgba(29,92,245,0.23)]"
+            className="group relative flex items-center justify-center overflow-hidden rounded-xl bg-[#1d5cf5] px-6 py-2.5 text-[14px] font-semibold text-white shadow-[0_4px_14px_0_rgba(29,92,245,0.39)] transition-all hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-[0_6px_20px_rgba(29,92,245,0.23)]"
           >
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             <span className="relative">Book a Demo</span>
-          </Button>
+          </Link>
         </div>
 
         {/* MOBILE TOGGLE */}
         <button
           onClick={() => setMobileOpen(true)}
           aria-label="Open menu"
-          className="pointer-events-auto inline-flex items-center justify-center rounded-xl bg-white/80 p-2.5 text-gray-600 shadow-sm backdrop-blur-md transition-colors hover:bg-gray-50 xl:hidden"
+          className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-white/60 bg-white/60 text-gray-600 shadow-sm backdrop-blur-2xl backdrop-saturate-150 transition-colors hover:bg-gray-50 xl:hidden"
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />

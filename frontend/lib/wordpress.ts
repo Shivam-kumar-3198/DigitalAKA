@@ -98,8 +98,8 @@ export interface PaginatedPosts {
 
 // ─── Posts ────────────────────────────────────────────────────────────────────
 
-// Fields needed for the listing page — omits content, modified, meta, tags, etc.
-const LISTING_FIELDS = 'id,slug,title,excerpt,date,_links';
+// Fields needed for the listing page and sitemap — omits content, meta, tags, etc.
+const LISTING_FIELDS = 'id,slug,title,excerpt,date,modified,_links';
 
 function buildPostsUrl(page: number, perPage: number, fields?: string, embed = true): string {
   let url = `${API_URL}/posts?${embed ? '_embed&' : ''}page=${page}&per_page=${perPage}&status=publish`;
@@ -115,10 +115,9 @@ export async function getAllPosts({
   embed = true,
 } = {}): Promise<PaginatedPosts> {
   try {
-    // Always fetch page 1 first to discover totalPages
-    const fetchOptions: RequestInit = fetchAll
-      ? { cache: 'no-store' } // Disable cache for large requests to avoid 2MB limit
-      : { cache: 'force-cache' };
+    // force-cache is required for static export (output: 'export') — no runtime server exists.
+    // The 2MB data-cache limit only applies to Next.js server deployments, not static export.
+    const fetchOptions: RequestInit = { cache: 'force-cache' };
     const firstRes = await fetch(buildPostsUrl(page, perPage, fields, embed), fetchOptions);
 
     if (!firstRes.ok) {
@@ -134,7 +133,7 @@ export async function getAllPosts({
       return { posts: firstBatch, totalPages, total };
     }
 
-    // Fetch all remaining pages in parallel — no more sequential waterfall
+    // Fetch all remaining pages in parallel
     const remainingBatches = await Promise.all(
       Array.from({ length: totalPages - 1 }, (_, i) =>
         fetch(buildPostsUrl(page + i + 1, perPage, fields, embed), fetchOptions)

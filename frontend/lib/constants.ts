@@ -93,18 +93,12 @@ export const ABOUT = {
   ],
   cta: 'Learn More About Us',
   ctaLink: '/about',
-  team: [
-    {
-      name: 'Alex Johnson',
-      role: 'Founder & CEO',
-      image: '/images/team/alex.jpg',
-    },
-    {
-      name: 'Samantha Lee',
-      role: 'Head of Design',
-      image: '/images/team/samantha.jpg',
-    },
-  ],
+  team: {
+    headline: 'A Blend of Creative & Technical Experts',
+    description:
+      'Our team is a curated mix of strategists, creatives, and engineers, united by a passion for building what’s next. We don’t just build products; we build partnerships.',
+    roles: ['Designers', 'Developers', 'Marketers', 'Strategists'],
+  },
 };
 
 // Portfolio items (for grid & detail pages)

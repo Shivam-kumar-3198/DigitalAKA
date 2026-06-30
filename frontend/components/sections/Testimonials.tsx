@@ -1,8 +1,21 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { collection, getDocs, query, orderBy, where } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 import { Star, Quote } from 'lucide-react';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 
-// Fully updated mock data with all real client images
-const TESTIMONIALS = [
+interface Testimonial {
+  id?: string;
+  name: string;
+  date: string;
+  rating: number;
+  image: string;
+  quote: string;
+}
+
+const FALLBACK: Testimonial[] = [
   {
     name: 'Swapna Katuku',
     date: '12 April 2023',
@@ -54,6 +67,28 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+
+  useEffect(() => {
+    async function fetchTestimonials() {
+      try {
+        const q = query(
+          collection(db, 'testimonials'),
+          where('active', '==', true),
+          orderBy('createdAt', 'desc')
+        );
+        const snap = await getDocs(q);
+        const data = snap.docs.map((d) => ({ id: d.id, ...d.data() } as Testimonial));
+        setTestimonials(data.length > 0 ? data : FALLBACK);
+      } catch {
+        setTestimonials(FALLBACK);
+      }
+    }
+    fetchTestimonials();
+  }, []);
+
+  const list = testimonials.length > 0 ? testimonials : FALLBACK;
+
   return (
     <SectionWrapper className="relative overflow-hidden bg-slate-50 py-20 sm:py-32">
       {/* Background visual flair */}
@@ -71,7 +106,7 @@ export default function Testimonials() {
 
         {/* 4-column layout for large screens, 2 for tablet, 1 for mobile */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {TESTIMONIALS.map((t, index) => (
+          {list.map((t: Testimonial, index: number) => (
             <div
               key={index}
               className="group relative flex flex-col items-center rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-900/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:ring-blue-500/20"

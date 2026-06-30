@@ -37,7 +37,7 @@ const INFO = [
 
 export default function ContactPage() {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-[#fafcff] py-24 sm:py-32">
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#fafcff] -mt-20 pt-28 pb-24 sm:pb-32">
       {/* Ambient dot grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-30"
