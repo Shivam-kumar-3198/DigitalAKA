@@ -32,7 +32,7 @@ interface PortfolioItem {
   description: string;
   challenge: string;
   solution: string;
-  tech: string;   // comma-separated string in form
+  tech: string | string[];
   liveUrl: string;
   slug: string;
   order: number;
@@ -186,10 +186,9 @@ export default function PortfolioPage() {
   const save = useCallback(async (data: Omit<PortfolioItem, "id" | "createdAt">) => {
     const payload = {
       ...data,
-      tech: data.tech
-        .split(",")
-        .map((t) => t.trim())
-        .filter(Boolean),
+      tech: Array.isArray(data.tech)
+        ? data.tech
+        : data.tech.split(",").map((t: string) => t.trim()).filter(Boolean),
     };
     if ((modal as PortfolioItem)?.id) {
       await updateDoc(doc(db, "portfolio", (modal as PortfolioItem).id), payload);

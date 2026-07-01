@@ -19,34 +19,39 @@ export default function Search({ isOpen, onClose }: SearchModalProps) {
   const [query, setQuery] = useState('');
   const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
   const [results, setResults] = useState<BlogPost[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const hasFetchedRef = useRef(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Fetch all posts once when the component mounts
+  // Fetch all posts only when the search modal first opens
   useEffect(() => {
+    if (!isOpen || hasFetchedRef.current) return;
+    hasFetchedRef.current = true;
     const fetchPosts = async () => {
       setIsLoading(true);
       const { posts: allPostsData } = await getAllPosts({ fetchAll: true, embed: false, fields: 'slug,title,excerpt' });
       const simplifiedPosts = allPostsData.map(p => ({ slug: p.slug, title: p.title.rendered, excerpt: p.excerpt.rendered.replace(/<[^>]*>/g, '') }));
       setAllPosts(simplifiedPosts);
-      setResults(simplifiedPosts.slice(0, 10)); // Show recent posts initially
+      setResults(simplifiedPosts.slice(0, 10));
       setIsLoading(false);
     };
     fetchPosts();
-  }, []);
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = 'hidden';
-      // Focus input when modal opens
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
       setTimeout(() => inputRef.current?.focus(), 100);
-      // Reset query when opening
       setQuery('');
     } else {
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     }
     return () => {
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     };
   }, [isOpen]);
 

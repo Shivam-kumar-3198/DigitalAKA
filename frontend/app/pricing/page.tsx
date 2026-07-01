@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE } from '@/lib/constants';
+import PricingPlansSection from './PricingPlansSection';
 
 export const metadata: Metadata = {
   title: 'Pricing — Affordable Email, SMS & SMTP Plans',
@@ -200,6 +201,8 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
+
+      <PricingPlansSection />
 
       {/* CTA */}
       <section className="bg-gradient-to-r from-[#1d5cf5] to-indigo-700 py-16">

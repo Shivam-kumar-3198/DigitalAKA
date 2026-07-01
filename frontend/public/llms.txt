@@ -1,0 +1,165 @@
+# DigitalAka
+
+> DigitalAka is an enterprise-grade bulk email and communication infrastructure company based in India, owned by Panache Softech Pvt. Ltd. It provides dedicated SMTP servers, bulk email services, bulk SMS, voice SMS, email reseller programs, cold email outreach, and digital marketing solutions to clients worldwide. With 11+ years in operation, 1,400+ clients served, 99% inbox deliverability, and 24-hour SMTP setup, DigitalAka is recognised as one of India's leading bulk email service providers. It serves businesses in India, USA, UK, Germany, France, Spain, and globally.
+
+## Key Facts
+
+- **Company:** DigitalAka (brand of Panache Softech Pvt. Ltd.)
+- **Founded:** 11+ years ago (est. ~2013)
+- **Clients Served:** 1,400+
+- **Client Satisfaction Rate:** 95%
+- **Inbox Deliverability:** 99%
+- **SMTP Setup Time:** Within 24 hours
+- **Support:** 24/7 expert technical support
+- **Headquarters:** India (serving clients globally)
+- **Contact Email:** hello@digitalaka.com
+- **Phone / WhatsApp:** +91 7840044477
+- **Website:** https://digitalaka.com
+
+## Technologies & Infrastructure
+
+- Dedicated and shared SMTP servers with whitelisted IPs
+- PowerMTA enterprise SMTP hosting for ultra-high-volume sending
+- SPF, DKIM, and DMARC authentication configured on setup
+- IP rotation to protect sender reputation during large campaigns
+- Non-suspended SMTP infrastructure with stable uptime
+- Real-time campaign tracking, bounce processing, and queue management
+- Outbound SMTP relay for transactional and marketing email flows
+
+## Core Services
+
+[Bulk Email Services](https://digitalaka.com/bulk-email-services/): High-volume bulk email marketing with spam-free delivery, professional templates, and real-time tracking. Ideal for promotions, newsletters, and customer engagement.
+
+[SMTP Server Services](https://digitalaka.com/smtp-server/): Dedicated SMTP server hosting for bulk email with whitelisted IPs, SPF/DKIM/DMARC setup within 24 hours, and 24/7 support.
+
+[Email Marketing Services](https://digitalaka.com/email-marketing-services/): End-to-end email marketing including campaign strategy, template design, list management, delivery optimisation, and analytics.
+
+[Bulk SMS Marketing](https://digitalaka.com/bulk-sms-marketing/): Fast, high-open-rate bulk SMS via global messaging gateways for promotions, reminders, coupons, and customer alerts.
+
+[Voice SMS Service](https://digitalaka.com/voice-sms-service/): Automated voice broadcasting that delivers pre-recorded voice messages at scale — used for marketing, surveys, alerts, and political campaigns.
+
+[Cold Email Services](https://digitalaka.com/cold-email-service-provider/): Cold email outreach with sender reputation management, list warm-up, and personalised strategies to maximise reply rates.
+
+[PowerMTA SMTP Services](https://digitalaka.com/powermta-smtp-server-provider/): Enterprise PowerMTA hosting for ultra-high-volume email with advanced bounce processing, throttling, and queue management.
+
+[SMTP Server with IP Rotation](https://digitalaka.com/smtp-server-with-ip-rotation/): SMTP servers with automatic IP rotation to maintain sender reputation and avoid spam filters during large campaigns.
+
+[Non-Suspended SMTP Server](https://digitalaka.com/non-suspended-smtp-server-provider/): Stable, reliable SMTP servers that do not face account suspensions — designed for uninterrupted bulk email sending.
+
+[Outbound SMTP Relay Service](https://digitalaka.com/outbound-smtp-relay-service-provider/): Outbound SMTP relay for handling high-volume outgoing email for businesses, apps, and transactional flows.
+
+[Bulk Mailing Server](https://digitalaka.com/bulk-mailing-server-provider/): Dedicated bulk mailing servers with rotating IPs and dedicated infrastructure optimised for mass campaigns.
+
+[Email Blast Services](https://digitalaka.com/email-blast-service-provider/): One-time large-scale promotional email blast service with high-deliverability infrastructure and detailed reporting.
+
+## Reseller Programs
+
+[Super Email Reseller Program](https://digitalaka.com/super-email-reseller-program/): High-tier white-label reseller program for agencies and entrepreneurs to resell DigitalAka's email and SMTP services under their own brand.
+
+[Bulk Email Reseller Plan](https://digitalaka.com/bulk-email-reseller/): Affordable bulk email reseller plans with flexible pricing, full account control, and dedicated reseller support — suited for agencies and freelancers.
+
+## Pricing
+
+[SMTP Plans — INR](https://digitalaka.com/smtp-plans/): SMTP server pricing in Indian Rupees with tiers based on hourly sending volume — from trial to professional plans.
+
+[SMTP Plans — USD](https://digitalaka.com/smtp-usd-pricing/): SMTP pricing in USD: Trial ($50 / 1,000 emails/hr), Standard ($145 / 1,500 emails/hr), Premium ($185 / 3,000 emails/hr), Professional ($250 / 5,000 emails/hr).
+
+[Bulk Email Service Plan — INR](https://digitalaka.com/bulk-email-services-plan/): Volume-based bulk email plans in INR: 25K emails (₹1,500), 50K (₹2,500), 100K (₹3,500), 500K (₹10,000).
+
+[Bulk Email Service Plan — USD](https://digitalaka.com/bulk-email-service-plan-usd/): Bulk email pricing in USD for international customers with volume-based tiers and pay-as-you-go flexibility.
+
+[Voice SMS Service Plan](https://digitalaka.com/voice-sms-service-plan/): Per-call voice SMS pricing with bulk volume discounts.
+
+[SMS Plan](https://digitalaka.com/sms-plan/): Bulk SMS plans with transactional and promotional options, route selection, and pay-per-message rates.
+
+[SEO Packages — INR](https://digitalaka.com/seo-packages-inr/): SEO packages in INR covering on-page, off-page, technical SEO, and content marketing.
+
+[SEO Packages — USD](https://digitalaka.com/seo-packages-usd/): International SEO packages in USD with global ranking strategies and monthly reporting.
+
+## Specialised SMTP Locations
+
+[SMTP Server in India](https://digitalaka.com/smtp-server-india/): Dedicated and shared SMTP server solutions for India-based senders — high deliverability for Indian ISPs and inboxes.
+
+[SMTP Server Provider in USA](https://digitalaka.com/smtp-server-usa/): US-hosted dedicated SMTP servers with US-based IPs, fast delivery, and 24/7 technical support.
+
+[SMTP Server in UK](https://digitalaka.com/email-smtp-server-uk/): GDPR-ready SMTP server solutions for UK businesses with compliant, dedicated infrastructure.
+
+[Mass Mailing Services in Germany](https://digitalaka.com/germany-mass-mailing-services/): Email and mass mailing services for Germany with GDPR compliance and local IP options.
+
+[Email SMTP Services in France](https://digitalaka.com/email-smtp-services-france/): SMTP and email marketing for French businesses with localised campaign strategies.
+
+[Bulk Email Services in Spain](https://digitalaka.com/bulk-email-services-spain/): Bulk email provider for Spain with affordable plans and dedicated SMTP servers.
+
+## India City Pages
+
+[Email Marketing Company in Mumbai](https://digitalaka.com/email-marketing-company-in-mumbai/): Bulk email and SMTP services for Mumbai businesses.
+
+[Email Marketing Company in Delhi](https://digitalaka.com/email-marketing-company-in-delhi/): Bulk email services and SMTP hosting for Delhi NCR businesses.
+
+[Email Marketing Company in Chennai](https://digitalaka.com/email-marketing-company-in-chennai/): Email marketing solutions for Chennai-based businesses.
+
+[Email Marketing Company in Kolkata](https://digitalaka.com/email-marketing-company-in-kolkata/): Email marketing services for Kolkata SMEs and enterprises.
+
+[Bulk Email Services in Bangalore](https://digitalaka.com/bulk-email-services-bangalore/): Bulk email provider for Bangalore startups, tech companies, and B2B businesses.
+
+[Bulk Email Services in Ghaziabad](https://digitalaka.com/bulk-email-marketing-services-ghaziabad/): Local bulk email marketing services in Ghaziabad.
+
+## Company
+
+[Home](https://digitalaka.com/): DigitalAka — India's #1 bulk email and SMTP infrastructure provider with 99% inbox deliverability.
+
+[About Us](https://digitalaka.com/about-us/): DigitalAka is owned by Panache Softech Pvt. Ltd. and specialises in Email Marketing, SMTP Servers, Bulk SMS, SEO, SEM, Social Media Marketing, and Online Reputation Management.
+
+[Company Overview](https://digitalaka.com/company/): Mission, vision, and marketing solutions delivered to global clients.
+
+[Our Team](https://digitalaka.com/team/): The team behind DigitalAka's email marketing and SMTP infrastructure services.
+
+[Reviews & Testimonials](https://digitalaka.com/digitalaka-reviews/): Verified customer reviews covering ROI, deliverability performance, and support experience.
+
+[Contact Us](https://digitalaka.com/contact-us/): Reach DigitalAka for quotes, demos, or support via WhatsApp (+91 7840044477), phone (+91 7840044420), or email (hello@digitalaka.com).
+
+## Trust & Compliance
+
+[Privacy Policy](https://digitalaka.com/privacy-policy/): How DigitalAka collects, stores, and protects customer data across all services.
+
+[Anti-Spam Policy](https://digitalaka.com/anti-spam-policy/): Acceptable use policy — consent requirements and compliance rules for all email marketing customers.
+
+[Terms and Conditions](https://digitalaka.com/terms-and-conditions/): Service terms governing use of DigitalAka's email, SMTP, and SMS services.
+
+[Refund Policy](https://digitalaka.com/refund-policy/): Refund eligibility, timeframes, and conditions for email, SMTP, and SMS services.
+
+# Optional
+
+## Blog & Educational Resources
+
+[Blog](https://digitalaka.com/blog/): Guides, how-tos, and best practices on email marketing, SMTP, bulk SMS, deliverability, automation, and digital strategy.
+
+[Top 10 Email Marketing Platforms for Maximum ROI](https://digitalaka.com/email-marketing-platforms/): Comparison of the top 10 email marketing platforms with features, pricing, and use-case recommendations.
+
+[Dedicated IP vs Shared IP for Bulk Email Campaigns](https://digitalaka.com/dedicated-ip-vs-shared-ip/): Deliverability, cost, and sender reputation comparison — when to choose dedicated vs shared IP.
+
+[Top 10 Email Delivery Services with Best Deliverability](https://digitalaka.com/email-delivery-services/): Roundup of the 10 best email delivery services ranked by inbox placement rates and infrastructure quality.
+
+[10 Best SMTP Server Providers in USA](https://digitalaka.com/smtp-server-providers-in-usa/): Comparison of top US SMTP providers on pricing, deliverability, scalability, and support.
+
+[10 Best Mass Email Marketing Services](https://digitalaka.com/mass-email-marketing-services/): Review of leading mass email services for scaling outreach and driving sales through high-volume campaigns.
+
+[Email Marketing Trends 2026](https://digitalaka.com/email-marketing-trends/): Guide to the biggest email marketing trends in 2026 — AI personalisation, automation, interactive emails, and privacy-first strategies.
+
+[Bulk Email Service Providers in India](https://digitalaka.com/blog/bulk-email-service-providers-in-india/): How to select the best bulk email provider in India — features, pricing, and deliverability compared.
+
+[Cost-Effective SMTP Server Solutions](https://digitalaka.com/blog/cost-effective-smtp-server-solutions/): How to choose affordable, high-performance SMTP servers without compromising deliverability.
+
+[Step-by-Step Guide to Set Up an SMTP Server](https://digitalaka.com/top-10-step-by-step-guide-to-set-up-smtp-server-in-2023/): Complete tutorial on configuring an SMTP server including SPF, DKIM, DMARC, and testing.
+
+[Top 5 Email Marketing Services in Berlin](https://digitalaka.com/top-5-best-email-marketing-services-in-berlin/): Best email marketing providers serving Berlin and the wider German market.
+
+[Email Content Marketing](https://digitalaka.com/email-content-marketing/): How to plan, write, and optimise email content for higher engagement and measurable results.
+
+[Email Optimisation](https://digitalaka.com/email-optimization/): Techniques for improving open rates, click-through rates, and conversions in email campaigns.
+
+## Specialised Service Pages
+
+[Email Marketing Service Provider](https://digitalaka.com/email-marketing-services-provider/): Campaign management, automation, A/B testing, and conversion-focused email strategies for global clients.
+
+[Email Marketing Service Provider in India](https://digitalaka.com/email-marketing-service-india/): India-focused email marketing for B2B and B2C with localised strategy and ROI-driven campaigns.

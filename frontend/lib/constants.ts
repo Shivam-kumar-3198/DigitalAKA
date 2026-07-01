@@ -10,18 +10,21 @@ export const NAV_LINKS = [
 
 // Site metadata
 export const SITE = {
-  name: 'digitalAka',
-  tagline: 'We create digital experiences that matter',
+  name: 'DigitalAka',
+  tagline: '#1 Bulk Email Services & SMTP Server Provider in India',
   url: 'https://digitalaka.com',
   description:
-    'digitalAka is a full-service digital agency specialising in web design, development, SEO, and digital marketing.',
-  logo: '/images/logo.svg', // you can use an SVG or PNG
+    'DigitalAka is India\'s best bulk email service and SMTP server provider. We offer bulk email marketing, SMTP infrastructure, bulk SMS, voice SMS, email reseller plans, and SEO services with 99% inbox delivery.',
+  logo: 'https://digitalaka.com/wp-content/uploads/2024/06/digitalaka-logo.webp',
+  ogImage: 'https://digitalaka.com/wp-content/uploads/2024/06/digitalaka-logo.webp',
   contactEmail: 'hello@digitalaka.com',
+  phone: '+91-98765-43210',
   social: {
     twitter: 'https://twitter.com/digitalaka',
     linkedin: 'https://linkedin.com/company/digitalaka',
     instagram: 'https://instagram.com/digitalaka',
     whatsapp: 'https://wa.me/919876543210',
+    facebook: 'https://facebook.com/digitalaka',
   },
 };
 

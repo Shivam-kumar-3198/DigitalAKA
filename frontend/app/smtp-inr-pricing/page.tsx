@@ -27,6 +27,46 @@ const breadcrumbJsonLd = {
   ],
 };
 
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'SMTP Server INR Pricing Plans',
+  description:
+    'Affordable SMTP server plans priced in Indian Rupees with dedicated IPs, PowerMTA, and 99% inbox deliverability. No hidden fees.',
+  provider: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  areaServed: 'IN',
+  serviceType: 'SMTP Server',
+  url: `${SITE.url}/smtp-inr-pricing`,
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'Starter SMTP Plan',
+      description: '500K emails/month, 1 Dedicated IP, PowerMTA, SPF/DKIM setup',
+      price: '3499',
+      priceCurrency: 'INR',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '3499',
+        priceCurrency: 'INR',
+        unitText: 'MONTH',
+      },
+    },
+    {
+      '@type': 'Offer',
+      name: 'Business SMTP Plan',
+      description: '2M emails/month, 5 Dedicated IPs, IP Rotation, Priority Support',
+      price: '9999',
+      priceCurrency: 'INR',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '9999',
+        priceCurrency: 'INR',
+        unitText: 'MONTH',
+      },
+    },
+  ],
+};
+
 const PLANS = [
   {
     name: 'Starter',
@@ -73,6 +113,7 @@ export default function SmtpInrPricingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
 
       <section className="relative overflow-hidden bg-gradient-to-br from-[#f0f5ff] via-white to-[#eef2ff] -mt-20 pt-28 pb-16 sm:pb-20">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(#c7d7fe_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />

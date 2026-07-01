@@ -2,6 +2,7 @@
 
 import type { ComponentType } from 'react';
 import Link from 'next/link';
+import { SITE } from '@/lib/constants';
 import {
   SiPaypal,
   SiRazorpay,
@@ -46,19 +47,37 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const services = [
-    'Email Blast',
-    'Cold Email',
-    'PowerMTA SMTP',
-    'Bulk Mailing',
-    'Non-Suspended SMTP',
-    'IP Rotation',
-    'Outbound Server',
+    { label: 'Bulk Email Services', href: '/bulk-email-services' },
+    { label: 'SMTP Server Services', href: '/smtp-server-services' },
+    { label: 'Bulk Email Reseller Plan', href: '/bulk-email-reseller-plan' },
+    { label: 'SMTP INR Pricing', href: '/smtp-inr-pricing' },
+    { label: 'Email Marketing', href: '/email-marketing' },
+    { label: 'Bulk SMS Marketing', href: '/bulk-sms-marketing' },
+    { label: 'Super Email Reseller', href: '/super-email-reseller' },
   ];
 
-  const locations = ['Mumbai', 'Chennai', 'Delhi', 'Kolkata', 'Bangalore', 'Ghaziabad'];
-  const regions = ['Spain', 'Germany', 'France', 'USA', 'UK'];
+  const locations = [
+    { label: 'Mumbai',    href: '/email-marketing-company-in-mumbai' },
+    { label: 'Chennai',   href: '/email-marketing-company-in-chennai' },
+    { label: 'Delhi',     href: '/email-marketing-company-in-delhi' },
+    { label: 'Kolkata',   href: '/email-marketing-company-in-kolkata' },
+    { label: 'Bangalore', href: '/bulk-email-services-bangalore' },
+    { label: 'Ghaziabad', href: '/bulk-email-marketing-services-ghaziabad' },
+  ];
+  const regions = [
+    { label: 'Spain',   href: '/bulk-email-services-spain' },
+    { label: 'Germany', href: '/germany-mass-mailing-services' },
+    { label: 'France',  href: '/email-smtp-services-france' },
+    { label: 'USA',     href: '/smtp-server-usa' },
+    { label: 'UK',      href: '/email-smtp-server-uk' },
+  ];
 
-  const legal = ['Anti Spam Policy', 'Terms & Conditions', 'Refund Policy', 'Privacy Policy'];
+  const legal = [
+    { label: 'Anti Spam Policy', href: '/anti-spam-policy' },
+    { label: 'Terms & Conditions', href: '/terms-and-conditions' },
+    { label: 'Refund Policy', href: '/refund-policy' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+  ];
 
   const payments = [
     { name: 'PayPal', icon: SiPaypal },
@@ -74,9 +93,9 @@ export default function Footer() {
   ];
 
   const socials = [
-    { name: 'Facebook', href: '#', icon: FaFacebookF, fallback: 'FB' },
-    { name: 'X', href: '#', icon: FaXTwitter, fallback: 'X' },
-    { name: 'LinkedIn', href: '#', icon: FaLinkedinIn, fallback: 'IN' },
+    { name: 'Facebook', href: SITE.social.facebook, icon: FaFacebookF, fallback: 'FB' },
+    { name: 'X', href: SITE.social.twitter, icon: FaXTwitter, fallback: 'X' },
+    { name: 'LinkedIn', href: SITE.social.linkedin, icon: FaLinkedinIn, fallback: 'IN' },
   ];
 
   return (
@@ -96,7 +115,7 @@ export default function Footer() {
           </div>
 
           <Link
-            href="#"
+            href="/contact"
             className="group flex items-center gap-2 whitespace-nowrap rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
           >
             Get Started Now
@@ -152,10 +171,10 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm text-slate-400">
               {services.map((item) => (
-                <li key={item}>
-                  <Link href="#" className="group flex items-center transition-colors hover:text-blue-400">
+                <li key={item.label}>
+                  <Link href={item.href} className="group flex items-center transition-colors hover:text-blue-400">
                     <span className="mr-0 h-px w-0 bg-blue-400 transition-all duration-300 group-hover:mr-2 group-hover:w-4" />
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -174,13 +193,13 @@ export default function Footer() {
                 </h5>
                 <ul className="space-y-2 text-sm text-slate-400">
                   {locations.slice(0, 4).map((item) => (
-                    <li key={item}>
-                      <Link href="#" className="transition-colors hover:text-white">
-                        {item}
+                    <li key={item.label}>
+                      <Link href={item.href} className="transition-colors hover:text-white">
+                        {item.label}
                       </Link>
                     </li>
                   ))}
-                  <li className="cursor-pointer pt-1 text-xs text-blue-400 hover:text-blue-300">
+                  <li className="pt-1 text-xs text-blue-400">
                     + More Cities
                   </li>
                 </ul>
@@ -192,12 +211,13 @@ export default function Footer() {
                 </h5>
                 <div className="flex flex-wrap gap-2 text-xs text-slate-400">
                   {regions.map((region) => (
-                    <span
-                      key={region}
-                      className="cursor-pointer rounded-md border border-white/5 bg-white/5 px-2 py-1 transition-colors hover:bg-white/10"
+                    <Link
+                      key={region.label}
+                      href={region.href}
+                      className="rounded-md border border-white/5 bg-white/5 px-2 py-1 transition-colors hover:bg-white/10 hover:text-white"
                     >
-                      {region}
-                    </span>
+                      {region.label}
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -238,12 +258,12 @@ export default function Footer() {
               </h4>
               <ul className="grid grid-cols-2 gap-2 text-xs text-slate-400">
                 {legal.map((item) => (
-                  <li key={item}>
+                  <li key={item.label}>
                     <Link
-                      href="#"
+                      href={item.href}
                       className="underline-offset-4 transition-colors hover:text-white hover:underline decoration-white/30"
                     >
-                      {item}
+                      {item.label}
                     </Link>
                   </li>
                 ))}

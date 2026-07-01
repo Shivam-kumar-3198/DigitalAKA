@@ -39,11 +39,11 @@ function InfrastructureVisual() {
 
       <div className="relative z-10">
         <div className="mb-5 flex items-center justify-between sm:mb-6">
-          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-500 sm:gap-2 sm:text-xs">
+          <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-slate-500 sm:gap-2">
             <Activity className="h-3.5 w-3.5 text-emerald-500 sm:h-4 sm:w-4" />
             System Status
           </div>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2 py-1 text-[9px] font-bold uppercase tracking-wider text-emerald-600 ring-1 ring-emerald-200 sm:px-2.5 sm:text-[10px]">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2 py-1 text-xs font-bold uppercase tracking-wider text-emerald-600 ring-1 ring-emerald-200 sm:px-2.5">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 motion-safe:animate-pulse" />
             Operational
           </span>
@@ -79,7 +79,7 @@ function InfrastructureVisual() {
               100%
               <CheckCircle2 className="h-4 w-4 text-blue-200 sm:h-6 sm:w-6" />
             </div>
-            <p className="mt-0.5 text-[8px] font-bold uppercase tracking-widest text-blue-100/90 sm:mt-1 sm:text-[10px]">
+            <p className="mt-0.5 text-xs font-bold uppercase tracking-widest text-blue-100/90 sm:mt-1">
               Enterprise Commitment
             </p>
           </div>
@@ -113,7 +113,7 @@ export default function AboutAndPricingPage() {
 
           {/* LEFT - PERFECTLY CENTERED FOR MOBILE */}
           <div className="flex flex-col items-center text-center pt-4 sm:items-start sm:text-left sm:pt-0">
-            <span className="mx-auto mb-4 inline-flex w-max items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-blue-600 shadow-sm sm:mx-0 sm:mb-6 sm:px-3.5 sm:py-1.5 sm:text-[10px]">
+            <span className="mx-auto mb-4 inline-flex w-max items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-widest text-blue-600 shadow-sm sm:mx-0 sm:mb-6 sm:px-3.5 sm:py-1.5">
               Company Profile
             </span>
 
@@ -129,7 +129,7 @@ export default function AboutAndPricingPage() {
               {stats.map((stat, idx) => (
                 <div key={idx} className="flex flex-col items-center justify-center px-1.5 text-center sm:px-4">
                   <dd className="text-xl font-black tracking-tight text-slate-950 sm:text-4xl">{stat.value}</dd>
-                  <dt className="mt-1 text-[8px] font-bold uppercase tracking-widest text-slate-400 sm:mt-1.5 sm:text-[10px]">{stat.label}</dt>
+                  <dt className="mt-1 text-xs font-bold uppercase tracking-widest text-slate-400 sm:mt-1.5">{stat.label}</dt>
                 </div>
               ))}
             </dl>
@@ -139,7 +139,7 @@ export default function AboutAndPricingPage() {
                 href="/about"
                 className="inline-flex h-12 w-full max-w-[220px] items-center justify-center rounded-full border border-slate-900 bg-slate-950 px-6 text-xs font-bold uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/20 active:scale-95 sm:h-14 sm:w-auto sm:max-w-none sm:px-8 sm:text-sm"
               >
-                Learn More
+                About DigitalAka
               </Link>
             </div>
           </div>
@@ -152,7 +152,7 @@ export default function AboutAndPricingPage() {
       </section>
 
       {/* ============ PRICING ============ */}
-      <section className="relative w-full overflow-hidden border-t border-slate-100 bg-white py-16 sm:py-24 lg:py-32" id="pricing" aria-labelledby="pricing-heading">
+      <section className="relative w-full overflow-hidden border-t border-slate-100 bg-white pt-16 pb-8 sm:pt-24 sm:pb-10 lg:pt-32 lg:pb-12" id="pricing" aria-labelledby="pricing-heading">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-16">
@@ -170,7 +170,7 @@ export default function AboutAndPricingPage() {
                 role="tab"
                 aria-selected={pricingType === 'smtp'}
                 onClick={selectSmtp}
-                className={`rounded-full py-2.5 text-[10px] font-bold uppercase tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 sm:py-3 sm:text-sm sm:tracking-normal sm:capitalize ${
+                className={`rounded-full py-2.5 text-xs font-bold uppercase tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 sm:py-3 sm:text-sm sm:tracking-normal sm:capitalize ${
                   pricingType === 'smtp' ? 'bg-white text-blue-600 shadow-sm ring-1 ring-slate-200/50' : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
@@ -180,7 +180,7 @@ export default function AboutAndPricingPage() {
                 role="tab"
                 aria-selected={pricingType === 'bulk'}
                 onClick={selectBulk}
-                className={`rounded-full py-2.5 text-[10px] font-bold uppercase tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 sm:py-3 sm:text-sm sm:tracking-normal sm:capitalize ${
+                className={`rounded-full py-2.5 text-xs font-bold uppercase tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 sm:py-3 sm:text-sm sm:tracking-normal sm:capitalize ${
                   pricingType === 'bulk' ? 'bg-white text-blue-600 shadow-sm ring-1 ring-slate-200/50' : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
@@ -203,7 +203,7 @@ export default function AboutAndPricingPage() {
                   }`}
                 >
                   {isPopular && (
-                    <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-blue-600 px-5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                    <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-blue-600 px-5 py-1.5 text-xs font-bold uppercase tracking-widest text-white shadow-[0_0_20px_rgba(37,99,235,0.4)]">
                       Most Popular
                     </div>
                   )}
@@ -218,7 +218,7 @@ export default function AboutAndPricingPage() {
                   </div>
 
                   <div className={`mb-8 rounded-2xl border p-5 sm:p-6 ${isPopular ? 'border-slate-700/50 bg-[#1e293b]/80' : 'border-blue-100/50 bg-blue-50/50'}`}>
-                    <p className={`mb-2 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest ${isPopular ? 'text-blue-300' : 'text-blue-600/80'}`}>
+                    <p className={`mb-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest ${isPopular ? 'text-blue-300' : 'text-blue-600/80'}`}>
                       <Zap className="h-4 w-4 shrink-0" />
                       Sending Limit
                     </p>
@@ -239,15 +239,16 @@ export default function AboutAndPricingPage() {
                     ))}
                   </ul>
 
-                  <button
-                    className={`mt-auto w-full rounded-xl py-4 text-sm font-bold transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ${
+                  <Link
+                    href="/contact"
+                    className={`mt-auto block w-full rounded-xl py-4 text-center text-sm font-bold transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ${
                       isPopular
                         ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/50 hover:bg-blue-500'
                         : 'bg-slate-50 text-slate-900 ring-1 ring-inset ring-slate-200 hover:bg-slate-100 hover:ring-slate-300'
                     }`}
                   >
                     Get Started
-                  </button>
+                  </Link>
                 </article>
               );
             })}

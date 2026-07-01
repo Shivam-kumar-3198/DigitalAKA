@@ -15,21 +15,72 @@ import {
   Menu,
   X,
   ChevronRight,
+  Briefcase,
+  Home,
+  BadgeDollarSign,
+  Users,
+  Building2,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
 const NAV = [
-  { href: "/admin",              label: "Dashboard",    icon: LayoutDashboard, exact: true },
-  { href: "/admin/contacts",     label: "Contacts",     icon: Mail },
-  { href: "/admin/faqs",         label: "FAQs",         icon: HelpCircle },
+  { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
+  { href: "/admin/contacts", label: "Contacts", icon: Mail },
+  { href: "/admin/portfolio", label: "Portfolio", icon: Briefcase },
+  { href: "/admin/services", label: "Services", icon: Zap },
   { href: "/admin/testimonials", label: "Testimonials", icon: MessageSquareQuote },
-  { href: "/admin/services",     label: "Services",     icon: Zap },
-  { href: "/admin/settings",     label: "Settings",     icon: Settings },
+  { href: "/admin/faqs", label: "FAQs", icon: HelpCircle },
 ];
 
-function SidebarContent({ onNav }: { onNav?: () => void }) {
+const NAV_CONTENT = [
+  { href: "/admin/hero", label: "Hero", icon: Home },
+  { href: "/admin/pricing", label: "Pricing", icon: BadgeDollarSign },
+  { href: "/admin/team", label: "Team", icon: Users },
+  { href: "/admin/clients", label: "Clients", icon: Building2 },
+];
+
+function NavItem({
+  href,
+  label,
+  icon: Icon,
+  exact,
+  onClick,
+}: {
+  href: string;
+  label: string;
+  icon: React.ElementType;
+  exact?: boolean;
+  onClick?: () => void;
+}) {
   const pathname = usePathname();
-  const router   = useRouter();
+  const isActive = exact ? pathname === href : pathname?.startsWith(href);
+
+  return (
+    <li>
+      <Link
+        href={href}
+        onClick={onClick}
+        className={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors duration-100 ${
+          isActive
+            ? "bg-[#1d5cf5] text-white shadow-[0_4px_14px_rgba(29,92,245,0.4)]"
+            : "text-slate-400 hover:bg-white/[0.06] hover:text-slate-200"
+        }`}
+      >
+        <Icon
+          className="h-[18px] w-[18px] shrink-0"
+          strokeWidth={isActive ? 2.5 : 1.8}
+        />
+        <span>{label}</span>
+        {isActive && (
+          <ChevronRight className="ml-auto h-3.5 w-3.5 opacity-60" />
+        )}
+      </Link>
+    </li>
+  );
+}
+
+function SidebarContent({ onNav }: { onNav?: () => void }) {
+  const router = useRouter();
   const { signOut, user } = useAuth();
 
   async function handleSignOut() {
@@ -46,41 +97,52 @@ function SidebarContent({ onNav }: { onNav?: () => void }) {
         </div>
         <div className="min-w-0">
           <p className="truncate text-sm font-bold text-white">DigitalAka</p>
-          <p className="text-[10px] uppercase tracking-widest text-slate-500">Admin Panel</p>
+          <p className="text-[10px] uppercase tracking-widest text-slate-500">
+            Admin Panel
+          </p>
         </div>
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 overflow-y-auto px-3 py-5">
-        <ul className="space-y-0.5">
-          {NAV.map(({ href, label, icon: Icon, exact }) => {
-            const isActive = exact
-              ? pathname === href
-              : pathname?.startsWith(href);
-            return (
-              <li key={href}>
-                <Link
-                  href={href}
-                  onClick={onNav}
-                  className={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors duration-100 ${
-                    isActive
-                      ? "bg-[#1d5cf5] text-white shadow-[0_4px_14px_rgba(29,92,245,0.4)]"
-                      : "text-slate-400 hover:bg-white/[0.06] hover:text-slate-200"
-                  }`}
-                >
-                  <Icon
-                    className="h-[18px] w-[18px] shrink-0"
-                    strokeWidth={isActive ? 2.5 : 1.8}
-                  />
-                  <span>{label}</span>
-                  {isActive && (
-                    <ChevronRight className="ml-auto h-3.5 w-3.5 opacity-60" />
-                  )}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+      <nav className="flex-1 overflow-y-auto px-3 py-5 space-y-5">
+        {/* Main */}
+        <div>
+          <p className="mb-1.5 px-3 text-[9px] font-bold uppercase tracking-widest text-slate-600">
+            Management
+          </p>
+          <ul className="space-y-0.5">
+            {NAV.map((item) => (
+              <NavItem key={item.href} {...item} onClick={onNav} />
+            ))}
+          </ul>
+        </div>
+
+        {/* Content */}
+        <div>
+          <p className="mb-1.5 px-3 text-[9px] font-bold uppercase tracking-widest text-slate-600">
+            Content
+          </p>
+          <ul className="space-y-0.5">
+            {NAV_CONTENT.map((item) => (
+              <NavItem key={item.href} {...item} onClick={onNav} />
+            ))}
+          </ul>
+        </div>
+
+        {/* Config */}
+        <div>
+          <p className="mb-1.5 px-3 text-[9px] font-bold uppercase tracking-widest text-slate-600">
+            Config
+          </p>
+          <ul className="space-y-0.5">
+            <NavItem
+              href="/admin/settings"
+              label="Settings"
+              icon={Settings}
+              onClick={onNav}
+            />
+          </ul>
+        </div>
       </nav>
 
       {/* User info */}

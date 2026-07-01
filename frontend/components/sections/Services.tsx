@@ -175,7 +175,7 @@ export default function CompleteSolutions() {
         
         {/* HEADER */}
         <header className="mx-auto mb-8 max-w-2xl text-center sm:mb-12">
-          <div className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-[10px] font-semibold tracking-wider text-blue-600 uppercase sm:mb-4 sm:px-3 sm:py-1 sm:text-xs">
+          <div className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-xs font-semibold tracking-wider text-blue-600 uppercase sm:mb-4 sm:px-3 sm:py-1">
             <Activity className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> Complete Infrastructure
           </div>
           <h2 id="solutions-heading" className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
@@ -190,7 +190,7 @@ export default function CompleteSolutions() {
               <div key={stat.id} className="flex flex-col items-center justify-center bg-white p-3 text-center sm:p-8">
                 <stat.icon className="mb-1.5 h-4 w-4 text-blue-600 sm:mb-3 sm:h-6 sm:w-6" strokeWidth={1.5} />
                 <AnimatedNumber value={stat.num} suffix={stat.suffix} />
-                <p className="mt-1 text-[9px] font-bold uppercase tracking-wider text-slate-400 sm:mt-2 sm:text-xs sm:font-medium sm:tracking-widest lg:text-sm">
+                <p className="mt-1 text-xs font-bold uppercase tracking-wider text-slate-400 sm:mt-2 sm:font-medium sm:tracking-widest lg:text-sm">
                   {stat.label}
                 </p>
               </div>
